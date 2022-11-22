@@ -1,0 +1,36 @@
+.header {
+	background: var(--white);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+.nav {
+	height: 4rem;
+}
+
+.nav ul {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	height: inherit;
+}
+
+.nav ul li a {
+	display: flex;
+}
+
+.logo {
+	padding: 0.5rem 0;
+}
+
+.login::after {
+	background: url(../../assets/images/user.svg) no-repeat center center;
+	content: "";
+	display: block;
+	height: 17px;
+	margin-left: 0.5rem;
+	width: 14px;
+}

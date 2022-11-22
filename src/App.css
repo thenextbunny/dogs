@@ -1,0 +1,58 @@
+:root {
+	--white: #fff;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	color: #333;
+	--type-first: Helvetica, Arial, sans-serif;
+	--type-second: "Spectral", sans-serif;
+	font-family: var(--type-first);
+	padding-top: 4rem;
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+}
+
+ul,
+li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+button,
+input {
+	color: #333;
+	display: block;
+	font-family: var(--type-first);
+	font-size: 1rem;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
