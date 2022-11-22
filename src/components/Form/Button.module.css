@@ -1,0 +1,20 @@
+.button {
+	background: #fb1;
+	border: none;
+	border-radius: 0.4rem;
+	color: #764701;
+	font-size: 1rem;
+	padding: 0.8rem 1.2rem;
+	transition: all 0.5s ease;
+	width: 100%;
+}
+
+.button:is(:hover, :focus) {
+	box-shadow: 0 0 0 3px #fea, 0 0 0 4px #fb1;
+	outline: none;
+}
+
+.button:disabled {
+	cursor: wait;
+	opacity: 0.5;
+}
