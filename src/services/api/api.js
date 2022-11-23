@@ -8,8 +8,16 @@ export const getToken = (body) => {
 	return api.post("/jwt-auth/v1/token", body);
 };
 
-export const getUserByToken = (token) => {
+export const getAuthUser = (token) => {
 	return api.get("/api/user", {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	});
+};
+
+export const validateToken = (token) => {
+	return api.post("/jwt-auth/v1/token/validate", null, {
 		headers: {
 			Authorization: `Bearer ${token}`,
 		},

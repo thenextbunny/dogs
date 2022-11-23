@@ -9,7 +9,6 @@ const Input = ({
 	onChange, // Function to be called when the input changes
 	required = false, // Default is not required
 	error, // Error message
-	...props // Other props
 }) => {
 	return (
 		<div className={styles.wrapper}>

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
-import axios from "axios";
+import { useContext } from "react";
 
 // Components
 import Button from "../../components/Form/Button";
@@ -9,13 +8,13 @@ import Input from "../../components/Form/Input";
 // Custom Hook
 import useForm from "../../hooks/useForm";
 
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "../../context/Auth/UserContext";
 
 const Form = () => {
 	const username = useForm("username");
 	const password = useForm("password");
 
-	const { login } = useContext(UserContext);
+	const { error, loading, login } = useContext(UserContext);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -31,7 +30,8 @@ const Form = () => {
 			<form onSubmit={handleSubmit}>
 				<Input label="Username" name="username" {...username} />
 				<Input label="Password" type="password" name="password" {...password} />
-				<Button type="submit">Sign In</Button>
+				{error && <p>{error}</p>}
+				{loading ? <Button disabled>Carregando...</Button> : <Button type="submit">Entrar</Button>}
 			</form>
 			<Link to="/login/create">Register</Link>
 		</section>
