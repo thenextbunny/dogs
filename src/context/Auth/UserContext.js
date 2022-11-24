@@ -7,17 +7,19 @@ import { createContext, useCallback, useEffect, useState } from "react";
 export const UserContext = createContext();
 
 export const UserStorage = ({ children }) => {
-	const [data, setData] = useState(null);
-	const [error, setError] = useState(null);
+	const [initializing, setInitializing] = useState(false); // State to check if the application is loading in the first time
+	const [data, setData] = useState(null); // State to store the user data
+	const [error, setError] = useState(null); // State to store the error
+	const [loading, setLoading] = useState(false); // State to check if the application is loading
 
-	const [loading, setLoading] = useState(false);
-
+	// Function to get the user data
 	const getUser = async (token) => {
 		const { data } = await getAuthUser(token);
 
 		setData(data);
 	};
 
+	// Function to login the user
 	const login = async (username, password) => {
 		try {
 			setError(null);
@@ -37,6 +39,7 @@ export const UserStorage = ({ children }) => {
 		}
 	};
 
+	// Function to logout the user
 	const logout = useCallback(async () => {
 		setData(null);
 		setError(null);
@@ -45,12 +48,14 @@ export const UserStorage = ({ children }) => {
 		window.localStorage.removeItem("token");
 	}, [setData, setError, setLoading]);
 
+	// useEffect to validate the token and get the user data if the token is valid
 	useEffect(() => {
 		const autoLogin = async () => {
 			const token = window.localStorage.getItem("token");
 
 			if (token) {
 				try {
+					setInitializing(true);
 					setLoading(true);
 					setError(null);
 
@@ -63,6 +68,7 @@ export const UserStorage = ({ children }) => {
 					logout();
 				} finally {
 					setLoading(false);
+					setInitializing(false);
 				}
 			}
 		};
@@ -76,6 +82,7 @@ export const UserStorage = ({ children }) => {
 				authed: !!data,
 				data,
 				error,
+				initializing,
 				loading,
 				login,
 				logout,

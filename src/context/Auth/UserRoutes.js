@@ -8,20 +8,20 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 
 export const RequireAuth = ({ children }) => {
-	const { authed, loading } = useContext(UserContext);
+	const { authed } = useContext(UserContext);
 
-	if (loading) return null;
-
-	if (!authed) return <Navigate to="/login" />;
+	return !authed ? <Navigate to="/login" /> : children;
 };
 
 export const RequireNotAuth = ({ children }) => {
-	const { authed, loading } = useContext(UserContext);
+	const { authed } = useContext(UserContext);
 
-	console.log(authed, loading);
+	return authed ? <Navigate to="/" /> : children;
+};
 
-	//if (authed && loading) return null;
-	if (authed && !loading) return <Navigate to="/" />;
+export const Loading = ({ children }) => {
+	const { initializing } = useContext(UserContext);
 
-	return children;
+	// TODO: Create a loading component to show while the application is loading in the first time
+	return initializing ? null : children;
 };
