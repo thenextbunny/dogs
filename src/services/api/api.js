@@ -23,3 +23,16 @@ export const validateToken = (token) => {
 		},
 	});
 };
+
+export const createUser = (body) => {
+	return api.post("/api/user", body);
+};
+
+export const postPhoto = (formData, token) => {
+	return api.post("/api/photo", formData, {
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "multipart/form-data",
+		},
+	});
+};

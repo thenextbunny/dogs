@@ -1,0 +1,25 @@
+.recover,
+.register {
+	text-align: center;
+	padding: 0.5rem 0;
+	width: 100%;
+}
+
+.recover {
+	margin-top: 0.9rem;
+}
+
+.recover__link {
+	color: #666;
+	display: inline-block;
+	line-height: 1;
+}
+
+/*
+.recover__link::after {
+	background: currentColor;
+	content: "";
+	display: block;
+	height: 2px;
+}
+*/

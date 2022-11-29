@@ -1,14 +1,16 @@
 import styles from "./Input.module.css";
+import { PropTypes } from "prop-types";
 
 const Input = ({
-	label, // Label for the input
-	type = "text", // Default type is text
-	name, // Name for the input
-	value, // Value for the input,
-	onBlur, // Function to be called when the input loses focus
-	onChange, // Function to be called when the input changes
-	required = false, // Default is not required
-	error, // Error message
+	error, // String
+	file = false,
+	invalid = false,
+	label,
+	name,
+	onBlur,
+	onChange,
+	type,
+	value,
 }) => {
 	return (
 		<div className={styles.wrapper}>
@@ -22,10 +24,14 @@ const Input = ({
 				type={type}
 				id={name}
 				name={name}
+				{...(file && { ...(value = { value }) })}
 				value={value}
 				onChange={onChange}
 				onBlur={onBlur}
-				required={required}
+				aria-invalid={!!error}
+				aria-label={label}
+				autoComplete="tel"
+				aria-required="true"
 			/>
 			{error && <p className={styles.error}>{error}</p>}
 		</div>
@@ -33,3 +39,15 @@ const Input = ({
 };
 
 export default Input;
+
+Input.propTypes = {
+	error: PropTypes.string,
+	file: PropTypes.bool,
+	invalid: PropTypes.bool,
+	label: PropTypes.string,
+	name: PropTypes.string,
+	onBlur: PropTypes.func,
+	onChange: PropTypes.func,
+	type: PropTypes.string,
+	value: PropTypes.string,
+};

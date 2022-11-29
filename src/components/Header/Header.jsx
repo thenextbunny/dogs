@@ -14,7 +14,7 @@ import { UserContext } from "../../context/Auth/UserContext";
 import { ReactComponent as Dogs } from "../../assets/images/dogs.svg";
 
 const Header = () => {
-	const { authed, logout } = useContext(UserContext);
+	const { data, authed, logout } = useContext(UserContext);
 
 	return (
 		<footer className={styles.header}>
@@ -22,19 +22,18 @@ const Header = () => {
 				<ul>
 					<li>
 						<Link to="/" className={styles.logo} aria-label="Home">
-							<Dogs />
+							<Dogs />{" "}
 						</Link>
 					</li>
 					<li>
 						{authed ? (
-							<>
-								<Link to="/account" className={styles.login}>
-									My Account
-								</Link>
-								<button onClick={logout} className={styles.login}>
-									Sair
-								</button>
-							</>
+							<ul>
+								<li>
+									<Link to="/account" className={styles.login}>
+										{data.nome}
+									</Link>
+								</li>
+							</ul>
 						) : (
 							<Link to="/login" className={styles.login}>
 								Login / Criar

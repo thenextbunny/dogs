@@ -1,0 +1,121 @@
+.nav ul {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.nav a,
+.nav button,
+.mobile__button {
+	align-items: center;
+	background: #eee;
+	border: 1px solid transparent;
+	border-radius: 0.2rem;
+	cursor: pointer;
+	display: flex;
+	height: 40px;
+	justify-content: center;
+	transition: all 0.1s ease-in-out;
+	width: 40px;
+}
+
+.nav a:is(:hover, :focus),
+.nav button:is(:hover, :focus) {
+	background: #fff;
+	box-shadow: 0 0 0 3px #eee;
+	border-color: #333;
+	outline: none;
+}
+
+/*
+    Mode 1 to use .active class in module 
+    .nav a:global(.active
+*/
+
+.nav a[aria-current="page"] {
+	background: #fff;
+	border-color: #fb1;
+	box-shadow: 0 0 0 3px #fea;
+}
+
+.nav a[aria-current="page"] svg > * {
+	fill: #fb1;
+}
+
+.mobile__button {
+	padding: 0;
+}
+
+.mobile__button::after {
+	background: currentColor;
+	border-radius: 2px;
+	box-shadow: 0 6px currentColor, 0 -6px currentColor;
+	content: "";
+	display: block;
+	height: 2px;
+	transition: all 0.2s ease-in-out;
+	width: 1.2rem;
+}
+
+.mobile__menu:is(:hover, :focus),
+:global(button).mobile__button[aria-expanded="true"] {
+	background: #fff;
+	border-color: #fb1;
+	box-shadow: 0 0 0 3px #fea;
+	color: #fb1;
+	outline: none;
+}
+
+:global(button).mobile__button[aria-expanded="true"]::after {
+	box-shadow: 0 8px currentColor, 0 -8px currentColor;
+	height: 4px;
+	transform: rotate(-90deg);
+	width: 4px;
+}
+
+.nav__mobile {
+	background: #fff;
+	border-radius: 0.2rem;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	display: block;
+	opacity: 0;
+	padding: 0 1rem;
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+	top: 70px;
+	transform: translateX(-10px);
+}
+
+.nav__mobile[hidden] {
+	opacity: 1;
+	pointer-events: initial;
+	transform: initial;
+	transition: 0.3s ease-in-out;
+	z-index: 100;
+}
+
+.nav__mobile a,
+.nav__mobile button {
+	align-items: center;
+	border: none;
+	border-bottom: 1px solid #eee;
+	background: none;
+	cursor: pointer;
+	display: flex;
+	padding: 0.5rem 0;
+	width: 100%;
+}
+
+.nav__mobile a:hover svg > *,
+.nav__mobile button:hover svg > * {
+	fill: #fb1;
+}
+
+.nav__mobile button {
+	border: none;
+}
+
+.nav__mobile svg {
+	margin-right: 0.5rem;
+}

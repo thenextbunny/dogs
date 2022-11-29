@@ -1,3 +1,6 @@
+// Componenet
+import Loading from "../../components/Loading/Loading";
+
 // Context
 import { UserContext } from "./UserContext";
 
@@ -19,9 +22,9 @@ export const RequireNotAuth = ({ children }) => {
 	return authed ? <Navigate to="/" /> : children;
 };
 
-export const Loading = ({ children }) => {
+export const Initialization = ({ children }) => {
 	const { initializing } = useContext(UserContext);
 
 	// TODO: Create a loading component to show while the application is loading in the first time
-	return initializing ? null : children;
+	return initializing ? <Loading /> : children;
 };

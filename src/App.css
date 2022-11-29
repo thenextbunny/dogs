@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@700&display=swap");
+
 :root {
 	--white: #fff;
 }
@@ -11,9 +13,18 @@
 body {
 	color: #333;
 	--type-first: Helvetica, Arial, sans-serif;
-	--type-second: "Spectral", sans-serif;
+	--type-second: "Spectral", georgia, serif;
 	font-family: var(--type-first);
+	min-width: 280px;
 	padding-top: 4rem;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	min-height: calc(100vh - 4rem);
+	width: 100%;
+	margin: 100rem 0;
 }
 
 a {
@@ -31,11 +42,8 @@ p {
 	margin: 0;
 }
 
-ul,
-li {
+ul {
 	list-style: none;
-	margin: 0;
-	padding: 0;
 }
 
 img {
@@ -55,4 +63,89 @@ input {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 1rem;
+}
+
+.title {
+	display: inline-block;
+	font-family: var(--type-second);
+	font-size: 3rem;
+	line-height: 1;
+	margin: 1rem 0 1rem 0.2rem;
+	position: relative;
+	z-index: 1;
+}
+
+.title::after {
+	background: #fb1;
+	border-radius: 0.2rem;
+	bottom: 5px;
+	content: "";
+	display: block;
+	height: 1.5rem;
+	left: -5px;
+	position: absolute;
+	width: 1.5rem;
+	z-index: -1;
+}
+
+@media (max-width: 575.98px) {
+	.title {
+		font-size: 2.4rem;
+	}
+
+	.title::after {
+		height: 1.1rem;
+		width: 1.1rem;
+	}
+}
+
+.subtitle {
+	color: #333;
+	display: inline-block;
+	font-family: var(--type-second);
+	font-size: 1.4rem;
+	line-height: 1.4;
+	margin-top: 0.7rem;
+	padding: 0.5rem;
+	text-align: center;
+	width: 100%;
+}
+
+.subtitle a {
+	color: #fb1;
+}
+
+/*
+.subtitle,
+.subtitle a {
+	color: #333;
+	display: inline-block;
+	line-height: 1;
+	padding: 0.5rem 0;
+	
+	width: 100%;
+
+	border: 1px solid red;
+}
+
+.subtitle::after {
+	content: "";
+	display: block;
+}
+
+.subtitle a {
+	color: #fb1;
+}*/
+
+.anime-left {
+	animation: anime-left 0.3s forwards;
+	opacity: 0;
+	transform: translateX(-20px);
+}
+
+@keyframes anime-left {
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
 }

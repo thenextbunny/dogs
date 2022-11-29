@@ -15,21 +15,22 @@ import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import User from "./pages/User/User";
-import { Loading, RequireAuth, RequireNotAuth } from "./context/Auth/UserRoutes";
+import { Initialization, RequireAuth, RequireNotAuth } from "./context/Auth/UserRoutes";
 
 const App = () => {
 	return (
 		<BrowserRouter>
 			<UserStorage>
-				<Loading>
+				<Initialization>
 					<Header />
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="login/*" element={<RequireNotAuth children={<Login />} />} />
-						<Route path="user/*" element={<RequireAuth children={<User />} />} />
+						<Route path="account/*" element={<RequireAuth children={<User />} />} />
+						<Route path="*" element={<h1>404</h1>} />
 					</Routes>
 					<Footer />
-				</Loading>
+				</Initialization>
 			</UserStorage>
 		</BrowserRouter>
 	);

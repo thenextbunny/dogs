@@ -7,7 +7,7 @@ import { createContext, useCallback, useEffect, useState } from "react";
 export const UserContext = createContext();
 
 export const UserStorage = ({ children }) => {
-	const [initializing, setInitializing] = useState(false); // State to check if the application is loading in the first time
+	const [initializing, setInitializing] = useState(true); // State to check if the application is loading in the first time
 	const [data, setData] = useState(null); // State to store the user data
 	const [error, setError] = useState(null); // State to store the error
 	const [loading, setLoading] = useState(false); // State to check if the application is loading
@@ -70,6 +70,8 @@ export const UserStorage = ({ children }) => {
 					setLoading(false);
 					setInitializing(false);
 				}
+			} else {
+				setInitializing(false);
 			}
 		};
 

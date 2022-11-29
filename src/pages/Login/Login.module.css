@@ -1,0 +1,37 @@
+.login {
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: 1fr 1fr;
+}
+
+.login::before {
+	background: url("../../assets/images/login.jpg") no-repeat center center/cover;
+	content: "";
+	display: block;
+}
+
+.container {
+	align-items: center;
+	display: flex;
+}
+
+.forms {
+	padding: 0 10%;
+}
+
+.forms section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 767.98px) {
+	.login {
+		grid-template-columns: 1fr;
+	}
+
+	.login::before {
+		display: none;
+	}
+}
