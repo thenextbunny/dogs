@@ -14,10 +14,10 @@ import { UserContext } from "../../context/Auth/UserContext";
 import { ReactComponent as Dogs } from "../../assets/images/dogs.svg";
 
 const Header = () => {
-	const { data, authed, logout } = useContext(UserContext);
+	const { data, authed } = useContext(UserContext);
 
 	return (
-		<footer className={styles.header}>
+		<header className={styles.header}>
 			<nav className={`${styles.nav} container`}>
 				<ul>
 					<li>
@@ -42,7 +42,7 @@ const Header = () => {
 					</li>
 				</ul>
 			</nav>
-		</footer>
+		</header>
 	);
 };
 

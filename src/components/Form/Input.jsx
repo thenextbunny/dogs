@@ -25,12 +25,13 @@ const Input = ({
 				id={name}
 				name={name}
 				{...(file && { ...(value = { value }) })}
-				value={value}
 				onChange={onChange}
 				onBlur={onBlur}
 				aria-invalid={!!error}
 				aria-label={label}
 				autoComplete="tel"
+				autoCorrect="off"
+				autoCapitalize="off"
 				aria-required="true"
 			/>
 			{error && <p className={styles.error}>{error}</p>}
@@ -41,7 +42,7 @@ const Input = ({
 export default Input;
 
 Input.propTypes = {
-	error: PropTypes.string,
+	error: PropTypes.string || null,
 	file: PropTypes.bool,
 	invalid: PropTypes.bool,
 	label: PropTypes.string,

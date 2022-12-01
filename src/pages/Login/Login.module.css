@@ -2,12 +2,19 @@
 	display: grid;
 	gap: 2rem;
 	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "image form";
+	position: relative;
 }
 
 .login::before {
 	background: url("../../assets/images/login.jpg") no-repeat center center/cover;
 	content: "";
 	display: block;
+	grid-area: image;
+	height: 100%;
+	left: -26px;
+	position: absolute;
+	width: 100%;
 }
 
 .container {
@@ -16,7 +23,7 @@
 }
 
 .forms {
-	padding: 0 10%;
+	grid-area: form;
 }
 
 .forms section {
@@ -28,6 +35,7 @@
 /* Small devices (landscape phones, 576px and up) */
 @media (max-width: 767.98px) {
 	.login {
+		grid-template-areas: "form";
 		grid-template-columns: 1fr;
 	}
 

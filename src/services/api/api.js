@@ -36,3 +36,7 @@ export const postPhoto = (formData, token) => {
 		},
 	});
 };
+
+export const getPhotos = (page, total, user) => {
+	return api.get(`/api/photo/?_page=${page}&_total=${total}&_user=${user}`);
+};

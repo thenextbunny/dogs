@@ -1,11 +1,13 @@
 // CSS
 import styles from "./Nav.module.css";
 
+import { UserContext } from "../../context/Auth/UserContext";
+
 // Custom hook
 import { useMedia } from "../../hooks/useMedia";
 
 // Hook
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // Icons
 import { ReactComponent as Add } from "../../assets/images/add.svg";
@@ -17,6 +19,7 @@ import { ReactComponent as Logout } from "../../assets/images/logout.svg";
 import { NavLink, useLocation } from "react-router-dom";
 
 const Nav = () => {
+	const { logout } = useContext(UserContext);
 	const mobile = useMedia("(max-width: 40rem)");
 	const { pathname } = useLocation();
 	const [menu, setMenu] = useState(false);
@@ -49,7 +52,7 @@ const Nav = () => {
 						</NavLink>
 					</li>
 					<li>
-						<button>
+						<button onClick={logout}>
 							<Logout />
 							{mobile && "Sair"}
 						</button>

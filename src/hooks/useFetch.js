@@ -28,8 +28,6 @@ export const useFetch = () => {
 
 			setData(response);
 		} catch (e) {
-			console.log(e);
-
 			setError(e.response.data.message);
 		} finally {
 			setLoading(false);

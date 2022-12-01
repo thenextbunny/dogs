@@ -13,7 +13,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 const Login = () => {
 	return (
-		<section className={styles.login}>
+		<section className={`container ${styles.login}`}>
 			<div className={styles.forms}>
 				<Routes>
 					<Route path="/" element={<Enter />} />

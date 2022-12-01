@@ -29,15 +29,9 @@ export const useForm = (type) => {
 
 	const validate = (value) => {
 		if (type === false) return true;
-		if (value.length === 0 && type !== "image") {
+
+		if (value.length === 0) {
 			setError("Este campo é obrigatório.");
-			return false;
-		} else if (
-			// verify if the type img includes jpg, jpeg or png
-			type === "image" &&
-			!types[type].regex.test(value)
-		) {
-			setError(types[type].message);
 			return false;
 		} else if (types[type] && !types[type].regex.test(value)) {
 			setError(types[type].message);

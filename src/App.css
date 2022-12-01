@@ -24,7 +24,6 @@ section {
 	flex-direction: column;
 	min-height: calc(100vh - 4rem);
 	width: 100%;
-	margin: 100rem 0;
 }
 
 a {
@@ -62,7 +61,11 @@ input {
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 0 1rem;
+	padding: 0 1.6rem;
+}
+
+.container-main {
+	padding: 3rem 0;
 }
 
 .title {
