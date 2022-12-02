@@ -1,4 +1,5 @@
-//mport { createUser } from "../../services/api/api";
+// API functions
+import { createUser } from "../../services/api/api";
 
 // Context
 import { UserContext } from "../../context/Auth/UserContext";
@@ -6,11 +7,11 @@ import { UserContext } from "../../context/Auth/UserContext";
 // Components
 import Button from "../../components/Form/Button";
 import Input from "../../components/Form/Input";
-import Error from "../../helper/Error";
+import Error from "../../components/Helper/Error";
 
-// Custom Hook
-import { useFetch } from "../../hooks/useFetch";
+// Hooks
 import { useForm } from "../../hooks/useForm";
+import { useAxios } from "../../hooks/useAxios";
 import { useContext } from "react";
 
 // React router dom
@@ -21,34 +22,33 @@ const Create = () => {
 	const email = useForm("email");
 	const password = useForm("");
 
-	const { error, request, loading } = useFetch();
 	const { login } = useContext(UserContext);
+
+	const { request, loading, error } = useAxios();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		if (username.validate() && email.validate() && password.validate()) {
-			await request("createUser", {
-				username: username.value,
-				email: email.value,
-				password: password.value,
-			});
+		if (username.error || email.error || password.error) return;
 
-			login(username.value, password.value);
-		}
+		const { url, options } = createUser({
+			username: username.value,
+			email: email.value,
+			password: password.value,
+		});
 
-		if (username.validate() || email.validate() || password.validate()) {
-			return;
-		}
+		const response = await request(url, options);
+
+		if (response) login(username.value, password.value);
 	};
 
 	return (
 		<section className="anime-left">
 			<h1 className="title">Cadastre-se</h1>
 			<form onSubmit={handleSubmit} autoComplete="off">
-				<Input label="Usuário" name="newUser" {...username} />
+				<Input label="Usuário" name="newUser" autoComplete="tel" {...username} />
 				<Input label="Email" name="newEmail" {...email} />
-				<Input label="Senha" type="newPassword" name="password" {...password} />
+				<Input label="Senha" type="password" name="newPassword" autoComplete="newPassword" {...password} />
 				{error && <Error error={error} />}
 				{loading ? <Button disabled>Cadastrando...</Button> : <Button type="submit">Cadastre-se</Button>}
 			</form>

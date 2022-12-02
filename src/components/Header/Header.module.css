@@ -1,5 +1,6 @@
 .header {
 	background: rgba(255, 255, 255, 0.798);
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 	position: fixed;
 	top: 0;
@@ -12,13 +13,21 @@
 }
 
 .nav ul {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
 	justify-content: space-between;
 	height: inherit;
 }
 
 .nav ul li a {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 }
 

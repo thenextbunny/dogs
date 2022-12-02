@@ -1,5 +1,7 @@
+// CSS
 import styles from "./Loading.module.css";
 
+// Icons
 import { ReactComponent as Load } from "../../assets/images/loading.svg";
 
 const Loading = () => {

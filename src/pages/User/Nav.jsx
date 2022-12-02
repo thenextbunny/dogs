@@ -1,6 +1,7 @@
 // CSS
 import styles from "./Nav.module.css";
 
+// Context
 import { UserContext } from "../../context/Auth/UserContext";
 
 // Custom hook
@@ -15,7 +16,7 @@ import { ReactComponent as Feed } from "../../assets/images/feed.svg";
 import { ReactComponent as Stats } from "../../assets/images/stats.svg";
 import { ReactComponent as Logout } from "../../assets/images/logout.svg";
 
-// React Router
+// React router dom
 import { NavLink, useLocation } from "react-router-dom";
 
 const Nav = () => {

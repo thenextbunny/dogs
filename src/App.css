@@ -109,7 +109,7 @@ input {
 	font-size: 1.4rem;
 	line-height: 1.4;
 	margin-top: 0.7rem;
-	padding: 0.5rem;
+
 	text-align: center;
 	width: 100%;
 }
@@ -140,7 +140,7 @@ input {
 	color: #fb1;
 }*/
 
-.anime-left {
+section {
 	animation: anime-left 0.3s forwards;
 	opacity: 0;
 	transform: translateX(-20px);

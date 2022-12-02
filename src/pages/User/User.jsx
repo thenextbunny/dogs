@@ -1,10 +1,13 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Header from "./Header";
-
+// Components
 import Feed from "../../components/Feed/Feed";
+
+// User components
+import Header from "./Header";
 import Post from "./Post";
 import Stats from "./Stats";
+
+// React router dom
+import { Routes, Route } from "react-router-dom";
 
 const User = () => {
 	return (

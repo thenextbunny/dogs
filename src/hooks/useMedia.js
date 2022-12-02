@@ -1,5 +1,10 @@
+// Hooks
 import { useEffect, useState } from "react";
 
+// Prop types
+import PropTypes from "prop-types";
+
+// The useMedia hook is used to detect the current media query of the browser. It is used to detect the current breakpoint of the browser.
 export const useMedia = (media) => {
 	const [match, setMatch] = useState(null);
 
@@ -19,4 +24,8 @@ export const useMedia = (media) => {
 	}, [media]);
 
 	return match;
+};
+
+useMedia.propTypes = {
+	media: PropTypes.string.isRequired,
 };

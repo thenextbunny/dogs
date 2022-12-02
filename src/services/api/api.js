@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const api = axios.create({
+const api = axios.create({
 	baseURL: "https://dogsapi.origamid.dev/json",
 });
 
@@ -25,18 +25,37 @@ export const validateToken = (token) => {
 };
 
 export const createUser = (body) => {
-	return api.post("/api/user", body);
+	return {
+		url: api.defaults.baseURL + "/api/user",
+		options: {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			data: body,
+		},
+	};
 };
 
 export const postPhoto = (formData, token) => {
-	return api.post("/api/photo", formData, {
-		headers: {
-			Authorization: `Bearer ${token}`,
-			"Content-Type": "multipart/form-data",
+	return {
+		url: api.defaults.baseURL + "/api/photo",
+		options: {
+			method: "POST",
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+			data: formData,
 		},
-	});
+	};
 };
 
-export const getPhotos = (page, total, user) => {
-	return api.get(`/api/photo/?_page=${page}&_total=${total}&_user=${user}`);
+export const getPhotos = ({ page, total, user }) => {
+	return {
+		url: api.defaults.baseURL + `/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
+		options: {
+			method: "GET",
+			cache: "no-store",
+		},
+	};
 };

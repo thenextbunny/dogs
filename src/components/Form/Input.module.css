@@ -1,5 +1,17 @@
 .wrapper {
 	margin-bottom: 1rem;
+	position: relative;
+}
+
+.label {
+	display: block;
+	font-size: 1rem;
+	line-height: 1;
+	padding: 0.5rem 0.1rem;
+}
+
+.input__wrapper {
+	position: relative;
 }
 
 .input {
@@ -31,20 +43,6 @@
 	box-shadow: 0 0 0 3px #fde;
 }
 
-.label {
-	display: block;
-	font-size: 1rem;
-	line-height: 1;
-	padding: 0.5rem 0.1rem;
-}
-
-.error {
-	color: #f31;
-	font-size: 0.875rem;
-	margin-top: 0.25rem;
-	padding: 0 0.2rem;
-}
-
 .input[type="file"]::file-selector-button {
 	background: rgb(242, 193, 67);
 	border: none;
@@ -53,4 +51,31 @@
 	cursor: pointer;
 	font-size: 1rem;
 	padding: 0.4rem;
+}
+
+.input:is([name="password"], [name="newPassword"]) {
+	padding-right: 70px;
+}
+
+.button {
+	background: none;
+	border: 1px solid transparent;
+	bottom: 0;
+	color: gray;
+	outline: none;
+	padding: 0.8rem 0.5rem;
+	position: absolute;
+	right: 0;
+	width: 70px;
+}
+
+.button:is(:hover, :focus) {
+	color: rgb(150, 150, 150);
+}
+
+.error {
+	color: #f31;
+	font-size: 0.875rem;
+	margin-top: 0.25rem;
+	padding: 0 0.2rem;
 }

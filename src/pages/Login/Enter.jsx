@@ -1,23 +1,20 @@
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-
 // CSS
 import styles from "./Enter.module.css";
 
 // Components
 import Button from "../../components/Form/Button";
 import Input from "../../components/Form/Input";
+import Error from "../../components/Helper/Error";
 
 // Context
 import { UserContext } from "../../context/Auth/UserContext";
 
-// Custom Hook
+// Hooks
 import { useForm } from "../../hooks/useForm";
+import { useContext } from "react";
 
-// Helper
-import Error from "../../helper/Error";
-
-//import Error from "../../helper/Error";
+// React router dom
+import { Link } from "react-router-dom";
 
 const Form = () => {
 	const username = useForm("username");

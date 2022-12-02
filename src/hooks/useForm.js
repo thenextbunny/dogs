@@ -1,4 +1,8 @@
+// Hooks
 import { useState } from "react";
+
+// Prop types
+import PropTypes from "prop-types";
 
 const types = {
 	username: {
@@ -23,6 +27,7 @@ const types = {
 	},
 };
 
+// * The useForm hook is used to validate the form fields.
 export const useForm = (type) => {
 	const [value, setValue] = useState("");
 	const [error, setError] = useState(null);
@@ -55,4 +60,8 @@ export const useForm = (type) => {
 		onChange,
 		onBlur: () => validate(value),
 	};
+};
+
+useForm.propTypes = {
+	type: PropTypes.oneOf(["username", "email", "password", "number", "image"]),
 };

@@ -1,21 +1,20 @@
+// API functions
+import { postPhoto } from "../../services/api/api";
+
 // CSS
 import styles from "./Post.module.css";
 
-// Component
+// Components
 import Button from "../../components/Form/Button";
 import Input from "../../components/Form/Input";
-
-// Custom Hook
-import { useForm } from "../../hooks/useForm";
-import { useFetch } from "../../hooks/useFetch";
+import Error from "../../components/Helper/Error";
 
 // Hooks
+import { useForm } from "../../hooks/useForm";
+import { useAxios } from "../../hooks/useAxios";
 import { useEffect, useState } from "react";
 
-// Helper
-import Error from "../../helper/Error";
-
-// React Router
+// React router dom
 import { useNavigate } from "react-router-dom";
 
 const Post = () => {
@@ -26,7 +25,7 @@ const Post = () => {
 
 	const [img, setImg] = useState(null);
 
-	const { data, error, loading, request } = useFetch();
+	const { data, error, loading, request } = useAxios();
 
 	const navigate = useNavigate();
 
@@ -35,16 +34,19 @@ const Post = () => {
 	}, [data, navigate]);
 
 	const handleImage = ({ target }) => {
-		if (target.files && target.files[0] && (target.files[0].type === "image/jpeg" || target.files[0].type === "image/png" || target.files[0].type === "image/gif")) {
-			setImg({
-				file: target.files[0],
-				preview: URL.createObjectURL(target.files[0]),
-				error: null,
-			});
-		} else {
-			setImg({
-				error: true,
-			});
+		if (target.files && target.files[0]) {
+			if (target.files[0].type === "image/jpeg" || target.files[0].type === "image/png") {
+				setImg({
+					file: target.files[0],
+					preview: URL.createObjectURL(target.files[0]),
+					raw: target.files[0],
+					error: null,
+				});
+			} else {
+				setImg({
+					error: true,
+				});
+			}
 		}
 	};
 
@@ -61,10 +63,9 @@ const Post = () => {
 
 			const token = window.localStorage.getItem("token");
 
-			await request("postPhoto", {
-				formData,
-				token,
-			});
+			const { url, options } = postPhoto(formData, token);
+
+			await request(url, options);
 		}
 	};
 
@@ -82,20 +83,6 @@ const Post = () => {
 			<div className={styles.preview} {...(img?.preview && { style: { backgroundImage: `url(${img.preview})` } })}>
 				{!img?.preview && <p className={styles.preview__text}>Nenhuma imagem foi enviada</p>}
 			</div>
-
-			{/*}
-			{img?.preview ? (
-				<div className={styles.preview} style={{ backgroundImage: `url('${img.preview}')` }}></div>
-			) : (
-				<div
-					className={styles.preview}
-					style={{
-						backgroundImage: "url('https://media.istockphoto.com/id/864591480/pt/vetorial/cartoon-dog-in-a-box-adoption-vector-illustration.jpg?s=612x612&w=0&k=20&c=FvdMEIYzuTVRlfbTcIBAO-7QMRNfKtAUpjKK-TePQQU=')",
-					}}
-				>
-					<p>Nenhuma imagem enviada</p>
-				</div>
-				)}*/}
 		</div>
 	);
 };

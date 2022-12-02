@@ -1,4 +1,8 @@
+// CSS
 import styles from "./Button.module.css";
+
+// Prop types
+import PropTypes from "prop-types";
 
 const Button = ({
 	type = "button", // Default type is button
@@ -13,3 +17,8 @@ const Button = ({
 };
 
 export default Button;
+
+Button.prototype = {
+	type: PropTypes.string,
+	children: PropTypes.node.isRequired,
+};

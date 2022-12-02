@@ -7,7 +7,7 @@ import Nav from "./Nav";
 // Hooks
 import { useEffect, useState } from "react";
 
-// React Router
+// React router dom
 import { useLocation } from "react-router-dom";
 
 const Header = () => {
