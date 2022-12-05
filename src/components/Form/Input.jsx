@@ -51,10 +51,8 @@ const Input = ({
 	);
 };
 
-export default Input;
-
 Input.propTypes = {
-	error: PropTypes.string || PropTypes.null,
+	error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 	file: PropTypes.bool,
 	label: PropTypes.string,
 	name: PropTypes.string.isRequired,
@@ -64,3 +62,5 @@ Input.propTypes = {
 	value: PropTypes.string,
 	autoComplete: PropTypes.string,
 };
+
+export default Input;

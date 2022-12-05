@@ -39,10 +39,10 @@ const Post = () => {
 				setImg({
 					file: target.files[0],
 					preview: URL.createObjectURL(target.files[0]),
-					raw: target.files[0],
-					error: null,
+					error: false,
 				});
 			} else {
+				console.log("Erro");
 				setImg({
 					error: true,
 				});
@@ -50,23 +50,40 @@ const Post = () => {
 		}
 	};
 
+	const validateImage = () => {
+		if (img === null) {
+			setImg({
+				error: true,
+			});
+			return false;
+		} else if (img.error) {
+			return false;
+		} else {
+			return true;
+		}
+	};
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		if (name.validate() || weight.validate() || age.validate()) {
-			const formData = new FormData();
+		name.validate();
+		weight.validate();
+		age.validate();
+		validateImage();
 
-			formData.append("img", img.raw);
-			formData.append("nome", name.value);
-			formData.append("peso", weight.value);
-			formData.append("idade", age.value);
+		if ((name.validate() && weight.validate() && age.validate() && validateImage()) === false) return;
 
-			const token = window.localStorage.getItem("token");
+		const formData = new FormData();
 
-			const { url, options } = postPhoto(formData, token);
+		formData.append("img", img.file);
+		formData.append("nome", name.value);
+		formData.append("peso", weight.value);
+		formData.append("idade", age.value);
 
-			await request(url, options);
-		}
+		const token = window.localStorage.getItem("token");
+
+		const { url, options } = postPhoto(formData, token);
+		await request(url, options);
 	};
 
 	return (

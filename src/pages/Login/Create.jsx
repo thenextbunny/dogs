@@ -29,7 +29,11 @@ const Create = () => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		if (username.error || email.error || password.error) return;
+		username.validate();
+		email.validate();
+		password.validate();
+
+		if ((username.validate() && email.validate() && password.validate()) === false) return;
 
 		const { url, options } = createUser({
 			username: username.value,

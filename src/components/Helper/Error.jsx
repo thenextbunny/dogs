@@ -9,8 +9,8 @@ const Error = ({ error }) => {
 	return <p className={styles.error}>{error}</p>;
 };
 
-export default Error;
-
 Error.propTypes = {
 	error: PropTypes.string,
 };
+
+export default Error;

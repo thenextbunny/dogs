@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Spectral:wght@700&display=swap");
 
 :root {
+	--black: #000;
+	--dark-charcoal: #333;
+	--dark-gray: #666;
+	--light-gray: #ccc;
+	--red: #ff0000;
 	--white: #fff;
 }
 
@@ -11,12 +16,31 @@
 }
 
 body {
-	color: #333;
+	color: var(--dark-charcoal);
 	--type-first: Helvetica, Arial, sans-serif;
 	--type-second: "Spectral", georgia, serif;
 	font-family: var(--type-first);
 	min-width: 280px;
 	padding-top: 4rem;
+}
+
+body::-webkit-scrollbar {
+	width: 0.9rem;
+}
+
+body::-webkit-scrollbar-track {
+	background: var(--light-gray);
+	padding: 1rem;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: var(--dark-gray);
+	border-radius: 0.3rem;
+	padding: 1rem;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+	background: var(--dark-charcoal);
 }
 
 section {
@@ -27,7 +51,7 @@ section {
 }
 
 a {
-	color: #333;
+	color: var(--dark-charcoal);
 	text-decoration: none;
 }
 
@@ -41,8 +65,12 @@ p {
 	margin: 0;
 }
 
-ul {
-	list-style: none;
+button,
+input {
+	color: var(--dark-charcoal);
+	display: block;
+	font-family: var(--type-first);
+	font-size: 1rem;
 }
 
 img {
@@ -50,12 +78,8 @@ img {
 	max-width: 100%;
 }
 
-button,
-input {
-	color: #333;
-	display: block;
-	font-family: var(--type-first);
-	font-size: 1rem;
+ul {
+	list-style: none;
 }
 
 .container {
@@ -65,7 +89,7 @@ input {
 }
 
 .container-main {
-	padding: 3rem 0;
+	padding-top: 1rem;
 }
 
 .title {
@@ -103,13 +127,12 @@ input {
 }
 
 .subtitle {
-	color: #333;
+	color: var(--dark-charcoal);
 	display: inline-block;
 	font-family: var(--type-second);
 	font-size: 1.4rem;
 	line-height: 1.4;
 	margin-top: 0.7rem;
-
 	text-align: center;
 	width: 100%;
 }
@@ -118,29 +141,7 @@ input {
 	color: #fb1;
 }
 
-/*
-.subtitle,
-.subtitle a {
-	color: #333;
-	display: inline-block;
-	line-height: 1;
-	padding: 0.5rem 0;
-	
-	width: 100%;
-
-	border: 1px solid red;
-}
-
-.subtitle::after {
-	content: "";
-	display: block;
-}
-
-.subtitle a {
-	color: #fb1;
-}*/
-
-section {
+.anime-left {
 	animation: anime-left 0.3s forwards;
 	opacity: 0;
 	transform: translateX(-20px);

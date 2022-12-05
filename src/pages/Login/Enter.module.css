@@ -10,16 +10,7 @@
 }
 
 .recover__link {
-	color: #666;
+	color: var(--dark-gray);
 	display: inline-block;
 	line-height: 1;
 }
-
-/*
-.recover__link::after {
-	background: currentColor;
-	content: "";
-	display: block;
-	height: 2px;
-}
-*/

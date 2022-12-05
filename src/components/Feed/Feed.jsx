@@ -1,11 +1,18 @@
 // Feed components
+import Modal from "./Modal";
 import Photos from "./Photos";
 
+// Hooks
+import { useState } from "react";
+
 const Feed = () => {
+	const [modal, setModal] = useState(null);
+
 	return (
-		<div>
-			<Photos />
-		</div>
+		<>
+			{modal && <Modal photo={modal} setModal={setModal} />}
+			<Photos setModal={setModal} />
+		</>
 	);
 };
 

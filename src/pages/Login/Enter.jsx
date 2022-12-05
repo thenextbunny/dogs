@@ -16,7 +16,7 @@ import { useContext } from "react";
 // React router dom
 import { Link } from "react-router-dom";
 
-const Form = () => {
+const Enter = () => {
 	const username = useForm("username");
 	const password = useForm();
 
@@ -25,9 +25,12 @@ const Form = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		if (username.validate() || password.validate()) {
-			login(username.value, password.value);
-		}
+		username.validate();
+		password.validate();
+
+		if ((username.validate() && password.validate()) === false) return;
+
+		login(username.value, password.value);
 	};
 
 	return (
@@ -51,4 +54,4 @@ const Form = () => {
 	);
 };
 
-export default Form;
+export default Enter;

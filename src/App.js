@@ -19,20 +19,24 @@ import { Initialization, RequireAuth, RequireNotAuth } from "./context/Auth/User
 
 const App = () => {
 	return (
-		<BrowserRouter>
-			<UserStorage>
-				<Initialization>
-					<Header />
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="login/*" element={<RequireNotAuth children={<Login />} />} />
-						<Route path="account/*" element={<RequireAuth children={<User />} />} />
-						<Route path="*" element={<h1>404</h1>} />
-					</Routes>
-					<Footer />
-				</Initialization>
-			</UserStorage>
-		</BrowserRouter>
+		<div className="App">
+			<BrowserRouter>
+				<UserStorage>
+					<Initialization>
+						<main>
+							<Header />
+							<Routes>
+								<Route path="/" element={<Home />} />
+								<Route path="login/*" element={<RequireNotAuth children={<Login />} />} />
+								<Route path="account/*" element={<RequireAuth children={<User />} />} />
+								<Route path="*" element={<h1>404</h1>} />
+							</Routes>
+							<Footer />
+						</main>
+					</Initialization>
+				</UserStorage>
+			</BrowserRouter>
+		</div>
 	);
 };
 

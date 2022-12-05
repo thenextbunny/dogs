@@ -59,3 +59,13 @@ export const getPhotos = ({ page, total, user }) => {
 		},
 	};
 };
+
+export const getPhoto = (id) => {
+	return {
+		url: api.defaults.baseURL + `/api/photo/${id}`,
+		options: {
+			method: "GET",
+			cache: "no-store",
+		},
+	};
+};

@@ -33,7 +33,7 @@ export const UserStorage = ({ children }) => {
 
 			await getUser(response.data.token);
 		} catch (error) {
-			setError("Invalid username or password");
+			setError("Usuário ou senha inválidos");
 		} finally {
 			setLoading(false);
 		}

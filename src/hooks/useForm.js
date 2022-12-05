@@ -32,19 +32,23 @@ export const useForm = (type) => {
 	const [value, setValue] = useState("");
 	const [error, setError] = useState(null);
 
+	// * The validate function is used to validate the form fields.
+	// * Render the validate function every time the function is called.
 	const validate = (value) => {
 		if (type === false) return true;
 
 		if (value.length === 0) {
 			setError("Este campo é obrigatório.");
 			return false;
-		} else if (types[type] && !types[type].regex.test(value)) {
+		}
+
+		if (types[type] && !types[type].regex.test(value)) {
 			setError(types[type].message);
 			return false;
-		} else {
-			setError(null);
-			return true;
 		}
+
+		setError(null);
+		return true;
 	};
 
 	const onChange = ({ target }) => {

@@ -16,9 +16,9 @@ const Button = ({
 	);
 };
 
-export default Button;
-
 Button.prototype = {
 	type: PropTypes.string,
 	children: PropTypes.node.isRequired,
 };
+
+export default Button;

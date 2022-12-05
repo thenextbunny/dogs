@@ -1,5 +1,5 @@
 .error {
-	color: #f31;
+	color: var(--red);
 	margin: 1rem 0;
 	text-align: center;
 }
