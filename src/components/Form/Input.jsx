@@ -45,7 +45,6 @@ const Input = ({
 					</button>
 				)}
 			</div>
-
 			{error && <p className={styles.error}>{error}</p>}
 		</div>
 	);

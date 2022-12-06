@@ -5,7 +5,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Context
-import { UserStorage } from "./context/Auth/UserContext";
+import { UserStorage } from "./context/Auth/Context";
 
 // Componentes
 import Header from "./components/Header/Header";
@@ -15,7 +15,9 @@ import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import User from "./pages/User/User";
-import { Initialization, RequireAuth, RequireNotAuth } from "./context/Auth/UserRoutes";
+import { Initialization, RequireAuth, RequireNotAuth } from "./context/Auth/Routes";
+
+import Head from "./helper/Head";
 
 const App = () => {
 	return (
@@ -24,6 +26,7 @@ const App = () => {
 				<UserStorage>
 					<Initialization>
 						<main>
+							<Head />
 							<Header />
 							<Routes>
 								<Route path="/" element={<Home />} />

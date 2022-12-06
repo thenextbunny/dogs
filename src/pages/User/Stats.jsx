@@ -1,5 +1,12 @@
+// Helper
+import Head from "../../helper/Head";
+
 const Stats = () => {
-	return <div>Stats</div>;
+	return (
+		<div>
+			<Head title="Estatísticas" description="Página de estatísticas do site dogs" />
+		</div>
+	);
 };
 
 export default Stats;

@@ -20,7 +20,7 @@ const Header = () => {
 				setTitle("Minhas fotos");
 				break;
 			case "post":
-				setTitle("Adicionar foto");
+				setTitle("Postar foto");
 				break;
 			case "stats":
 				setTitle("Estatísticas");
@@ -31,7 +31,7 @@ const Header = () => {
 	}, [location]);
 
 	return (
-		<header className={styles.header}>
+		<header className={`${styles.header} anime-left`}>
 			<h1 className="title">{title}</h1>
 			<Nav />
 		</header>

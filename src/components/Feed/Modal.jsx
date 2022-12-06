@@ -1,7 +1,7 @@
 import styles from "./Modal.module.css";
 
 // Components
-import Error from "../../components/Helper/Error";
+import Error from "../../helper/Error";
 
 // Hooks
 import { useAxios } from "../../hooks/useAxios";

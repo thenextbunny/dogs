@@ -2,7 +2,7 @@
 import styles from "./Photos.module.css";
 
 // Components
-import Error from "../../components/Helper/Error";
+import Error from "../../helper/Error";
 import Item from "./Item";
 
 // Hooks

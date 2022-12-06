@@ -1,7 +1,5 @@
-// Components
-import Feed from "../../components/Feed/Feed";
-
 // User components
+import Account from "./Account";
 import Header from "./Header";
 import Post from "./Post";
 import Stats from "./Stats";
@@ -14,7 +12,7 @@ const User = () => {
 		<section className="container">
 			<Header />
 			<Routes>
-				<Route path="/" element={<Feed />} />
+				<Route path="/" element={<Account />} />
 				<Route path="post" element={<Post />} />
 				<Route path="stats" element={<Stats />} />
 			</Routes>

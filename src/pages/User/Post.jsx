@@ -7,7 +7,7 @@ import styles from "./Post.module.css";
 // Components
 import Button from "../../components/Form/Button";
 import Input from "../../components/Form/Input";
-import Error from "../../components/Helper/Error";
+import Error from "../../helper/Error";
 
 // Hooks
 import { useForm } from "../../hooks/useForm";
@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 
 // React router dom
 import { useNavigate } from "react-router-dom";
+import Head from "../../helper/Head";
 
 const Post = () => {
 	const name = useForm();
@@ -88,6 +89,7 @@ const Post = () => {
 
 	return (
 		<div className={`${styles.post} anime-left`}>
+			<Head title="Postar foto" description="Poste a melhor foto" />
 			<form onSubmit={handleSubmit} className={styles.form}>
 				<Input label="Nome" name="name" {...name} />
 				<Input label="Peso" name="weight" {...weight} />

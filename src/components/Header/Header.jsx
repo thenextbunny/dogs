@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 
 // Context
-import { UserContext } from "../../context/Auth/UserContext";
+import { UserContext } from "../../context/Auth/Context";
 
 // Images
 import { ReactComponent as Dogs } from "../../assets/images/dogs.svg";

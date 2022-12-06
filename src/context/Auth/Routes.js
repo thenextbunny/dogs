@@ -2,7 +2,7 @@
 import Loading from "../../components/Loading/Loading";
 
 // Context
-import { UserContext } from "./UserContext";
+import { UserContext } from "./Context";
 
 // Hooks
 import { useContext } from "react";

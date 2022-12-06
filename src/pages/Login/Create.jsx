@@ -2,12 +2,15 @@
 import { createUser } from "../../services/api/api";
 
 // Context
-import { UserContext } from "../../context/Auth/UserContext";
+import { UserContext } from "../../context/Auth/Context";
 
 // Components
 import Button from "../../components/Form/Button";
 import Input from "../../components/Form/Input";
-import Error from "../../components/Helper/Error";
+import Error from "../../helper/Error";
+
+// Helper
+import Head from "../../helper/Head";
 
 // Hooks
 import { useForm } from "../../hooks/useForm";
@@ -20,7 +23,7 @@ import { Link } from "react-router-dom";
 const Create = () => {
 	const username = useForm("username");
 	const email = useForm("email");
-	const password = useForm("");
+	const password = useForm("password");
 
 	const { login } = useContext(UserContext);
 
@@ -48,13 +51,16 @@ const Create = () => {
 
 	return (
 		<section className="anime-left">
+			<Head title="Criar conta" description="Crie uma conta para acessar o site dogs" />
 			<h1 className="title">Cadastre-se</h1>
 			<form onSubmit={handleSubmit} autoComplete="off">
-				<Input label="Usuário" name="newUser" autoComplete="tel" {...username} />
-				<Input label="Email" name="newEmail" {...email} />
-				<Input label="Senha" type="password" name="newPassword" autoComplete="newPassword" {...password} />
+				<Input label="Usuário" name="new-username" autoComplete="new-username" {...username} />
+				<Input label="Email" name="new-email" {...email} autoComplete="new-email" />
+				<Input label="Senha" type="password" name="new-password" {...password} autoComplete="new-password" />
 				{error && <Error error={error} />}
-				{loading ? <Button disabled>Cadastrando...</Button> : <Button type="submit">Cadastre-se</Button>}
+				<Button disabled={loading} type="submit">
+					{loading ? "Cadastrando..." : "Cadastre-se"}
+				</Button>
 			</form>
 
 			<h2 className="subtitle">

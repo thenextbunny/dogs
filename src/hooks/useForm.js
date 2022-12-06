@@ -14,15 +14,17 @@ const types = {
 		message: "Preencha um e-mail válido.",
 	},
 	password: {
-		regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-		message: "A senha deve ter pelo menos 8 caracteres com pelo menos uma letra e um número.",
+		regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+		message: "A senha deve ter pelo menos 6 caracteres com pelo menos uma letra e um número.",
+	},
+	passwordConfirm: {
+		regex: null,
 	},
 	number: {
 		regex: /^\d+$/,
 		message: "Utilize apenas números.",
 	},
 	image: {
-		regex: /\.(jpe?g|png|gif)$/i,
 		message: "Utilize uma imagem no formato jpg, jpeg ou png.",
 	},
 };
@@ -33,8 +35,8 @@ export const useForm = (type) => {
 	const [error, setError] = useState(null);
 
 	// * The validate function is used to validate the form fields.
-	// * Render the validate function every time the function is called.
 	const validate = (value) => {
+		// If the type is not defined, return true.
 		if (type === false) return true;
 
 		if (value.length === 0) {
@@ -42,7 +44,9 @@ export const useForm = (type) => {
 			return false;
 		}
 
-		if (types[type] && !types[type].regex.test(value)) {
+		// If the type is a regex, execute it.
+		if (types[type] && types[type].regex && !types[type].regex.test(value)) {
+			console.log("regex");
 			setError(types[type].message);
 			return false;
 		}
@@ -56,13 +60,25 @@ export const useForm = (type) => {
 		setValue(target.value);
 	};
 
+	const verifyPassword = (password) => {
+		if (password !== value) {
+			setError("As senhas não são iguais.");
+			return false;
+		}
+
+		setError(null);
+		return true;
+	};
+
 	return {
 		value,
 		setValue,
 		error,
+		setError,
 		validate: () => validate(value),
 		onChange,
 		onBlur: () => validate(value),
+		verifyPassword,
 	};
 };
 

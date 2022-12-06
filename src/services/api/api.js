@@ -69,3 +69,29 @@ export const getPhoto = (id) => {
 		},
 	};
 };
+
+export const recoverPassword = (body) => {
+	return {
+		url: api.defaults.baseURL + "/api/password/lost",
+		options: {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			data: body,
+		},
+	};
+};
+
+export const resetPassword = (body) => {
+	return {
+		url: api.defaults.baseURL + "/api/password/reset",
+		options: {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			data: body,
+		},
+	};
+};

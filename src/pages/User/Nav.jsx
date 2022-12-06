@@ -2,7 +2,7 @@
 import styles from "./Nav.module.css";
 
 // Context
-import { UserContext } from "../../context/Auth/UserContext";
+import { UserContext } from "../../context/Auth/Context";
 
 // Custom hook
 import { useMedia } from "../../hooks/useMedia";
@@ -53,7 +53,7 @@ const Nav = () => {
 						</NavLink>
 					</li>
 					<li>
-						<button onClick={logout}>
+						<button onClick={logout} aria-label="Sair" title="Sair">
 							<Logout />
 							{mobile && "Sair"}
 						</button>
