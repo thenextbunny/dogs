@@ -95,3 +95,17 @@ export const resetPassword = (body) => {
 		},
 	};
 };
+
+export const postComment = (id, body, token) => {
+	return {
+		url: api.defaults.baseURL + `/api/comment/${id}`,
+		options: {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			data: body,
+		},
+	};
+};

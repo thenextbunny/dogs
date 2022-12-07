@@ -58,7 +58,12 @@
 }
 
 .comments {
-	padding: 0 2rem;
+	padding: 0 2rem 2rem;
+
+	display: flex;
+	flex-direction: column;
+
+	justify-content: space-between;
 }
 
 @media (max-width: 64rem) {

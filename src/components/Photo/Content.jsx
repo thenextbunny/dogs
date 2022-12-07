@@ -47,7 +47,9 @@ const Content = ({ data }) => {
 					<li>{photo.idade === 1 ? `${photo.idade} ano` : `${photo.idade} anos`}</li>
 				</ul>
 			</div>
-			<Comments id={photo.id} comments={comments} />
+			<div className={styles.comments}>
+				<Comments id={photo.id} comments={comments} />
+			</div>
 		</article>
 	);
 };

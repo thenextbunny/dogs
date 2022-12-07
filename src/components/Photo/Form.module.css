@@ -1,0 +1,86 @@
+.form {
+	align-items: stretch;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	height: 3.6rem;
+}
+
+.textarea {
+	background: var(light-shadow);
+	border: 1px solid var(--light-gray);
+	border-radius: 0.5rem 0 0 0.5rem;
+	font-family: var(--type-first);
+	font-size: 0.9rem;
+	padding: 0.5rem 0.5rem calc(0.5rem + 0.4rem) 0.5rem;
+	transition: all 0.2s ease-in-out;
+	resize: none;
+}
+
+.textarea::placeholder {
+	color: var(--dark-gray);
+	font-family: inherit;
+}
+
+.textarea:is(:focus, :hover) {
+	border-color: var(--yellow);
+	box-shadow: 0 0 0 3px var(--light-yellow);
+	outline: none;
+}
+
+.textarea::-webkit-scrollbar {
+	width: 5px;
+}
+
+.textarea::-webkit-scrollbar-track {
+	background: var(--light-gray);
+}
+
+.textarea::-webkit-scrollbar-thumb {
+	background: var(--dark-charcoal);
+}
+
+.textarea::-webkit-scrollbar-thumb:hover {
+	background: var(--dark-gray);
+}
+
+.button {
+	align-items: center;
+	background: var(--light-shadow);
+	border: 1px solid var(--light-gray);
+	border-left: 1px solid transparent;
+	border-radius: 0 0.5rem 0.5rem 0;
+	color: var(--dark-charcoal);
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	padding: 0 0.2rem;
+	transition: all 0.2s ease-in-out;
+}
+
+.button:is(:focus, :hover) {
+	border-color: var(--yellow);
+	box-shadow: 0 0 0 3px var(--light-yellow);
+	outline: none;
+}
+
+.button:is(:focus, :hover) svg path {
+	fill: var(--light-yellow);
+	stroke: var(--yellow);
+}
+
+.button:not([disabled]):is(:focus, :hover) svg g {
+	animation: baking 1s infinite;
+}
+
+@keyframes baking {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.button[disabled] {
+	cursor: default;
+}
