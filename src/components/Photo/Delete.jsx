@@ -9,27 +9,26 @@ import { useAxios } from "../../hooks/useAxios";
 import styles from "./Delete.module.css";
 
 const Delete = ({ id }) => {
-	//const { request } = useAxios();
+	const { request } = useAxios();
+
 	//const [confirm, setConfirm] = useState(false);
 
 	//const handleClick = () => {
 	//	setConfirm(!confirm);
 	//};
 
-	//const handleDelete = async () => {
-	//	const { url, options } = deletePhoto(id);
+	const handleDelete = async () => {
+		const { url, options } = deletePhoto(id);
 
-	//	const response = await request(url, options);
+		const response = await request(url, options);
 
-	//	console.log(response);
+		console.log(response);
 
-	//	if (response.status === 200) {
-	//		console.log("deletado");
-	//	}
-	//};
+		if (response.status === 200) window.location.reload();
+	};
 
 	// TODO: Button delete and confirm delete with modal or not? And correct the styles
-	return;
+	return <button onClick={handleDelete}>Deletar</button>;
 };
 
 export default Delete;

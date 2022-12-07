@@ -51,9 +51,7 @@ export const getPhotos = ({ page, total, user }) => {
 		url: api.defaults.baseURL + `/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
 		options: {
 			method: "GET",
-			// remove all cache
-			cache: "no-store",
-			noCache: true,
+			"Cache-Control": "no-store, no-cache, must-revalidate",
 		},
 	};
 };
