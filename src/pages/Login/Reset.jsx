@@ -15,7 +15,7 @@ import { useAxios } from "../../hooks/useAxios";
 import { Navigate, useNavigate } from "react-router-dom";
 
 // Services
-import { resetPassword } from "../../services/api/api";
+import { resetPassword } from "../../services/api/utils";
 
 const Reset = () => {
 	const password = useForm("password");

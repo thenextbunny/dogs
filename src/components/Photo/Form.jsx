@@ -10,21 +10,19 @@ import { useAxios } from "../../hooks/useAxios";
 
 // Images
 import { ReactComponent as Send } from "../../assets/images/send.svg";
-import { postComment } from "../../services/api/api";
+import { postComment } from "../../services/api/utils";
 
 // Prop Types
 import PropTypes from "prop-types";
 
 const Form = ({ id, setComments }) => {
-	const { request, error } = useAxios();
+	const { request, error, loading } = useAxios();
 	const [comment, setComment] = useState("");
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		const token = window.localStorage.getItem("token");
-
-		const { url, options } = postComment(id, { comment }, token);
+		const { url, options } = postComment(id, { comment });
 
 		const response = await request(url, options);
 
@@ -35,13 +33,15 @@ const Form = ({ id, setComments }) => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className={styles.form}>
-			<textarea className={styles.textarea} id="comment" name="comment" value={comment} onChange={({ target }) => setComment(target.value)} autoComplete="off" aria-label="Escreva um comentário" placeholder="Escreva um comentário" />
+		<>
 			<Error error={error} />
-			<button className={styles.button} aria-label="Comentar" disabled={comment.length === 0}>
-				<Send />
-			</button>
-		</form>
+			<form onSubmit={handleSubmit} className={styles.form}>
+				<textarea className={styles.textarea} id="comment" name="comment" value={comment} onChange={({ target }) => setComment(target.value)} autoComplete="off" aria-label="Escreva um comentário" placeholder="Escreva um comentário" />
+				<button className={styles.button} aria-label="Comentar" disabled={loading || comment.length === 0}>
+					<Send />
+				</button>
+			</form>
+		</>
 	);
 };
 

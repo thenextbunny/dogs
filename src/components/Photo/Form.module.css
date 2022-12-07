@@ -57,6 +57,10 @@
 	transition: all 0.2s ease-in-out;
 }
 
+.button svg {
+	transition: all 0.2s ease-in-out;
+}
+
 .button:is(:focus, :hover) {
 	border-color: var(--yellow);
 	box-shadow: 0 0 0 3px var(--light-yellow);

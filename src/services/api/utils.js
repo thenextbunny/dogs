@@ -1,8 +1,4 @@
-import axios from "axios";
-
-const api = axios.create({
-	baseURL: "https://dogsapi.origamid.dev/json",
-});
+import { api } from "./config";
 
 export const getToken = (body) => {
 	return api.post("/jwt-auth/v1/token", body);
@@ -55,7 +51,9 @@ export const getPhotos = ({ page, total, user }) => {
 		url: api.defaults.baseURL + `/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
 		options: {
 			method: "GET",
+			// remove all cache
 			cache: "no-store",
+			noCache: true,
 		},
 	};
 };
@@ -96,16 +94,28 @@ export const resetPassword = (body) => {
 	};
 };
 
-export const postComment = (id, body, token) => {
+export const postComment = (id, body) => {
 	return {
 		url: api.defaults.baseURL + `/api/comment/${id}`,
 		options: {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
-				Authorization: `Bearer ${token}`,
+				Authorization: `Bearer ${window.localStorage.getItem("token")}`,
 			},
 			data: body,
+		},
+	};
+};
+
+export const deletePhoto = (id) => {
+	return {
+		url: api.defaults.baseURL + `/api/photo/${id}`,
+		options: {
+			method: "DELETE",
+			headers: {
+				Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+			},
 		},
 	};
 };

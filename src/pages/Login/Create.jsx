@@ -1,5 +1,5 @@
 // API functions
-import { createUser } from "../../services/api/api";
+import { createUser } from "../../services/api/utils";
 
 // Context
 import { UserContext } from "../../context/Auth/Context";

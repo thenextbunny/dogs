@@ -1,8 +1,15 @@
 // CSS
 import styles from "./Content.module.css";
 
+// Context
+import { UserContext } from "../../context/Auth/Context";
+
+// Hook
+import { useContext } from "react";
+
 // Photo component
 import Comments from "./Comments";
+import Delete from "./Delete";
 
 // React router dom
 import { Link } from "react-router-dom";
@@ -11,6 +18,8 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Content = ({ data }) => {
+	const { username } = useContext(UserContext);
+
 	const { photo, comments } = data;
 
 	return (
@@ -18,37 +27,36 @@ const Content = ({ data }) => {
 			<div className={styles.photo}>
 				<img src={photo.src} alt={photo.title} />
 			</div>
-			<div className={styles.details}>
-				{
-					// TODO: Add a button to close the modal
-					/* 
-						<div className={styles.close}>
-							<button aria-label="Fechar modal" onClick={() => setModal(null)}>
-								X
-							</button>
-						</div>
-					*/
-				}
-				<div className={styles.author}>
-					<p>
-						<Link to={`/profile/${photo.author}`} aria-label={`Ver perfil de ${photo.author}`}>
-							@{photo.author}
-						</Link>
-					</p>
-					<p className={styles.views} aria-label={photo.acessos === 1 ? `${photo.acessos} visualização` : `${photo.acessos} visualizações`}>
-						{photo.acessos}
-					</p>
+			<div className={styles.container}>
+				<div className={styles.details}>
+					<div className={styles.author}>
+						<p>
+							{username && username === photo.author ? (
+								<Delete id={photo.id} />
+							) : (
+								<Link to={`/profile/${photo.author}`} aria-label={`${photo.author === username ? "Minha conta" : `Ver perfil do usuário ${photo.author}`}`}>
+									@{photo.author}
+								</Link>
+							)}
+						</p>
+						<p className={styles.views} aria-label={photo.acessos === 1 ? `${photo.acessos} visualização` : `${photo.acessos} visualizações`}>
+							{photo.acessos}
+						</p>
+					</div>
+
+					<div className={styles.description}>
+						<h1 className="title">
+							<Link to={`/photo/${photo.id}`}>{photo.title}</Link>
+						</h1>
+						<ul className={styles.attributes}>
+							<li>{photo.peso} kg</li>
+							<li>{photo.idade === 1 ? `${photo.idade} ano` : `${photo.idade} anos`}</li>
+						</ul>
+					</div>
 				</div>
-				<h1 className="title">
-					<Link to={`/photo/${photo.id}`}>{photo.title}</Link>
-				</h1>
-				<ul className={styles.attributes}>
-					<li>{photo.peso} kg</li>
-					<li>{photo.idade === 1 ? `${photo.idade} ano` : `${photo.idade} anos`}</li>
-				</ul>
-			</div>
-			<div className={styles.comments}>
-				<Comments id={photo.id} comments={comments} />
+				<div className={styles.comments}>
+					<Comments id={photo.id} comments={comments} />
+				</div>
 			</div>
 		</article>
 	);

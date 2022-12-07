@@ -1,5 +1,5 @@
 // API
-import { recoverPassword } from "../../services/api/api";
+import { recoverPassword } from "../../services/api/utils";
 
 // Components
 import Button from "../../components/Form/Button";
@@ -31,7 +31,7 @@ const Recover = () => {
 			url: window.location.href.replace("recover", "reset"),
 		});
 
-		const response = await request(url, options);
+		await request(url, options);
 
 		//if (response.status === 200) setSuccess(true);
 	};

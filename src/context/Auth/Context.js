@@ -1,5 +1,5 @@
 // API
-import { getAuthUser, getToken, validateToken } from "../../services/api/api";
+import { getAuthUser, getToken, validateToken } from "../../services/api/utils";
 
 // Hooks
 import { createContext, useCallback, useEffect, useState } from "react";
@@ -15,6 +15,8 @@ export const UserStorage = ({ children }) => {
 	// Function to get the user data
 	const getUser = async (token) => {
 		const { data } = await getAuthUser(token);
+
+		console.log(data);
 
 		setData(data);
 	};
@@ -88,6 +90,7 @@ export const UserStorage = ({ children }) => {
 				loading,
 				login,
 				logout,
+				username: data?.username,
 			}}
 		>
 			{children}

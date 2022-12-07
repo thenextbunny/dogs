@@ -1,13 +1,13 @@
 import styles from "./Modal.module.css";
 
-// Components
-import Error from "../../helper/Error";
+// Component
+//import Error from "../../helper/Error";
+import Content from "../Photo/Content";
 
 // Hooks
 import { useAxios } from "../../hooks/useAxios";
 import { useEffect } from "react";
-import { getPhoto } from "../../services/api/api";
-import Content from "../Photo/Content";
+import { getPhoto } from "../../services/api/utils";
 
 // Prop types
 import PropTypes from "prop-types";
@@ -29,9 +29,10 @@ const Modal = ({ photo, setModal }) => {
 		event.target === event.currentTarget && setModal(null);
 	};
 
+	// TODO: Error handling
+	if (error) return null;
 	return (
 		<div className={styles.modal} onClick={handleOutsideClick}>
-			{error && <Error error={error} />}
 			{loading && <div>Loading...</div>}
 			{data && <Content data={data} setModal={setModal} />}
 		</div>

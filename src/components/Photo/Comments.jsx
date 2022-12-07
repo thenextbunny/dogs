@@ -20,18 +20,17 @@ const Comments = ({ id, comments: commentsList }) => {
 
 	return (
 		<>
-			{comments && (
-				<ul className={styles.comments}>
-					{comments.map((comment) => (
-						<li key={comment.comment_ID}>
-							<p>
-								<strong>{comment.comment_author}: </strong>
-								{comment.comment_content}
-							</p>
-						</li>
-					))}
-				</ul>
-			)}
+			<ul className={styles.comments}>
+				{comments.map((comment) => (
+					<li key={comment.comment_ID}>
+						<p>
+							<strong>{comment.comment_author}: </strong>
+							{comment.comment_content}
+						</p>
+					</li>
+				))}
+			</ul>
+
 			{authed && <Form id={id} setComments={setComments} />}
 		</>
 	);

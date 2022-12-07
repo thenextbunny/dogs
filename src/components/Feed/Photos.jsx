@@ -7,7 +7,7 @@ import Item from "./Item";
 
 // Hooks
 import { useAxios } from "../../hooks/useAxios";
-import { getPhotos } from "../../services/api/api";
+import { getPhotos } from "../../services/api/utils";
 import { useEffect } from "react";
 
 // Prop types
@@ -18,9 +18,11 @@ const Photos = ({ setModal }) => {
 
 	useEffect(() => {
 		const fetchPhotos = async () => {
-			const { url, options } = getPhotos({ page: 1, total: 6, user: 0 });
+			const { url, options } = getPhotos({ page: 1, total: 100, user: 11051 });
 
-			await request(url, options);
+			const response = await request(url, options);
+
+			console.log(response);
 		};
 
 		fetchPhotos();

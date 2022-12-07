@@ -1,5 +1,5 @@
 // API functions
-import { postPhoto } from "../../services/api/api";
+import { postPhoto } from "../../services/api/utils";
 
 // CSS
 import styles from "./Post.module.css";
