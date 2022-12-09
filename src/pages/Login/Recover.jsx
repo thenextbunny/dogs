@@ -37,42 +37,44 @@ const Recover = () => {
 	};
 
 	return (
-		<section className="anime-left">
-			<Head title="Recuperar senha" description="Recupere sua senha" />
-			<h1 className="title">Recuperar a senha</h1>
-			{data ? (
-				<div
-					style={{
-						display: "flex",
-						flexDirection: "column",
-						alignItems: "center",
-						justifyContent: "center",
-					}}
-				>
-					<img src="https://static5.depositphotos.com/1006571/490/v/950/depositphotos_4904284-stock-illustration-dog-smiling-holding-letter-his.jpg" alt="Imagem de recuperação de senha" width={300} />
-					<p style={{ color: "#4c1" }}>{data}!</p>
-				</div>
-			) : (
-				<form onSubmit={handleSubmit}>
-					<Input label="Email ou usuário" name="user-or-email" {...username} />
-					<Error error={error} />
-					<Button disabled={loading} type="submit">
-						{loading ? "Enviando email..." : "Enviar email"}
-					</Button>
-				</form>
-			)}
-			<h2 className="subtitle">
+		<>
+			<Head title="Recuperar senha" description="Recupere a sua senha do site dogs" />
+			<section className="anime-left">
+				<h1 className="title">Recuperar a senha</h1>
 				{data ? (
-					<>
-						Voltar para a <Link to="/login">página de login</Link>
-					</>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+							justifyContent: "center",
+						}}
+					>
+						<img src="https://static5.depositphotos.com/1006571/490/v/950/depositphotos_4904284-stock-illustration-dog-smiling-holding-letter-his.jpg" alt="Imagem de recuperação de senha" width={300} />
+						<p style={{ color: "#4c1" }}>{data}!</p>
+					</div>
 				) : (
-					<>
-						Lembrou a senha? <Link to="/login">Faça o login</Link>
-					</>
+					<form onSubmit={handleSubmit}>
+						<Input label="Email ou usuário" name="user-or-email" {...username} />
+						<Error error={error} />
+						<Button disabled={loading} type="submit">
+							{loading ? "Enviando email..." : "Enviar email"}
+						</Button>
+					</form>
 				)}
-			</h2>
-		</section>
+				<h2 className="subtitle">
+					{data ? (
+						<>
+							Voltar para a <Link to="/login">página de login</Link>
+						</>
+					) : (
+						<>
+							Lembrou a senha? <Link to="/login">Faça o login</Link>
+						</>
+					)}
+				</h2>
+			</section>
+		</>
 	);
 };
 

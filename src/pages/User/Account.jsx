@@ -10,13 +10,13 @@ import Head from "../../helper/Head";
 // Hook
 import { useContext } from "react";
 
-const Account = () => {
+const Account = ({ user }) => {
 	const { data } = useContext(UserContext);
 
 	return (
 		<>
 			<Head title={`@${data.username}`} description="Página de Minha Conta do site dogs" />
-			<Feed />
+			<Feed user={user} />
 		</>
 	);
 };

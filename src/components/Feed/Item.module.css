@@ -9,10 +9,7 @@
 		grid-row: initial;
 	}
 
-	/* pegar sempre a terceira foto de cada linha */
-
 	.photo:nth-child(3n + 3) {
-		border: 1px solid red;
 		grid-column: 1 / 3;
 		grid-row: span 4;
 	}
@@ -25,7 +22,7 @@
 	overflow: hidden;
 }
 
-.photo img {
+.photo > div {
 	grid-area: 1 / 1;
 }
 

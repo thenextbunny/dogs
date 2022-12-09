@@ -11,6 +11,7 @@ import { getPhoto } from "../../services/api/utils";
 
 // Prop types
 import PropTypes from "prop-types";
+import Loading from "../../helper/Loading";
 
 const Modal = ({ photo, setModal }) => {
 	const { data, error, loading, request } = useAxios();
@@ -33,7 +34,7 @@ const Modal = ({ photo, setModal }) => {
 	if (error) return null;
 	return (
 		<div className={styles.modal} onClick={handleOutsideClick}>
-			{loading && <div>Loading...</div>}
+			{loading && <Loading />}
 			{data && <Content data={data} setModal={setModal} />}
 		</div>
 	);

@@ -4,6 +4,9 @@ import styles from "./Content.module.css";
 // Context
 import { UserContext } from "../../context/Auth/Context";
 
+// Helper
+import Image from "../../helper/Image";
+
 // Hook
 import { useContext } from "react";
 
@@ -25,7 +28,7 @@ const Content = ({ data }) => {
 	return (
 		<article className={styles.content}>
 			<div className={styles.photo}>
-				<img src={photo.src} alt={photo.title} />
+				<Image src={photo.src} alt={photo.title} />
 			</div>
 			<div className={styles.container}>
 				<div className={styles.details}>

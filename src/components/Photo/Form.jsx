@@ -15,7 +15,7 @@ import { postComment } from "../../services/api/utils";
 // Prop Types
 import PropTypes from "prop-types";
 
-const Form = ({ id, setComments }) => {
+const Form = ({ authed, id, setComments }) => {
 	const { request, error, loading } = useAxios();
 	const [comment, setComment] = useState("");
 
@@ -32,14 +32,22 @@ const Form = ({ id, setComments }) => {
 		}
 	};
 
+	console.log("Form", authed);
+
 	return (
 		<>
 			<Error error={error} />
 			<form onSubmit={handleSubmit} className={styles.form}>
 				<textarea className={styles.textarea} id="comment" name="comment" value={comment} onChange={({ target }) => setComment(target.value)} autoComplete="off" aria-label="Escreva um comentário" placeholder="Escreva um comentário" />
-				<button className={styles.button} aria-label="Comentar" disabled={loading || comment.length === 0}>
-					<Send />
-				</button>
+				{authed ? (
+					<button type="submit" className={styles.button} aria-label="Comentar" disabled={loading || comment.length === 0}>
+						<Send />
+					</button>
+				) : (
+					<button type="button" className={styles.button} aria-label="Comentar" disabled={loading || comment.length === 0}>
+						<Send />
+					</button>
+				)}
 			</form>
 		</>
 	);

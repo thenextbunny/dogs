@@ -12,24 +12,29 @@ import { useEffect } from "react";
 
 // Prop types
 import PropTypes from "prop-types";
+import Loading from "../../helper/Loading";
 
-const Photos = ({ setModal }) => {
+const Photos = ({ page, setInfinite, setModal, user }) => {
 	const { loading, data, error, request } = useAxios();
 
 	useEffect(() => {
 		const fetchPhotos = async () => {
-			const { url, options } = getPhotos({ page: 1, total: 100, user: 11051 });
+			const { url, options } = getPhotos({ page, total: 6, user });
 
-			const response = await request(url, options);
+			const { status, data } = await request(url, options);
 
-			console.log(response);
+			console.log(status, data);
+
+			if (status === 200 && data.length < 6) setInfinite(false);
+
+			//if (response && response.status === 200)
 		};
 
 		fetchPhotos();
-	}, [request]);
+	}, [request, user, page]);
 
 	if (error) return <Error error={error} />;
-	if (loading) return <div>Loading...</div>;
+	if (loading) return <Loading />;
 	if (data)
 		return (
 			<ul className={`${styles.photos} anime-left`}>
@@ -42,7 +47,10 @@ const Photos = ({ setModal }) => {
 };
 
 Photos.propTypes = {
+	page: PropTypes.number,
+	setInfinite: PropTypes.func.isRequired,
 	setModal: PropTypes.func.isRequired,
+	user: PropTypes.number,
 };
 
 export default Photos;

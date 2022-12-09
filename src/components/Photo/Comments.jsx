@@ -31,7 +31,7 @@ const Comments = ({ id, comments: commentsList }) => {
 				))}
 			</ul>
 
-			{authed && <Form id={id} setComments={setComments} />}
+			{authed && <Form authed={authed} id={id} setComments={setComments} />}
 		</>
 	);
 };

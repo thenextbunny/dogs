@@ -60,18 +60,20 @@ const Reset = () => {
 
 	if (init) return null;
 	return login && key ? (
-		<section>
+		<>
 			<Head title="Redefinir senha" description="Redefina sua senha" />
-			<h1 className="title">Redefinir senha</h1>
-			<form onSubmit={handleSubmit}>
-				<Input label="Nova senha" type="password" name="new-password" {...password} />
-				<Input label="Repita a senha" type="password" name="new-password-again" {...passwordConfirm} error={!!!passwordConfirm.error && passwordConfirm.value !== password.value ? passwordConfirm.setError("As senhas são diferentes") : passwordConfirm.error} />
-				<Error error={error} />
-				<Button disabled={loading} type="submit">
-					{loading ? "Redefinindo..." : "Redefinir senha"}
-				</Button>
-			</form>
-		</section>
+			<section>
+				<h1 className="title">Redefinir senha</h1>
+				<form onSubmit={handleSubmit}>
+					<Input label="Nova senha" type="password" name="new-password" {...password} />
+					<Input label="Repita a senha" type="password" name="new-password-again" {...passwordConfirm} error={!!!passwordConfirm.error && passwordConfirm.value !== password.value ? passwordConfirm.setError("As senhas são diferentes") : passwordConfirm.error} />
+					<Error error={error} />
+					<Button disabled={loading} type="submit">
+						{loading ? "Redefinindo..." : "Redefinir senha"}
+					</Button>
+				</form>
+			</section>
+		</>
 	) : (
 		<Navigate to="/login" />
 	);

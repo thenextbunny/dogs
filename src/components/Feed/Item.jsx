@@ -1,5 +1,8 @@
 import styles from "./Item.module.css";
 
+// Helper
+import Image from "../../helper/Image";
+
 // Prop types
 import PropTypes from "prop-types";
 
@@ -10,7 +13,7 @@ const Item = ({ photo, setModal }) => {
 
 	return (
 		<li className={styles.photo} onClick={handleClick}>
-			<img src={photo.src} alt={photo.title} />
+			<Image src={photo.src} alt={photo.title} />
 			<span className={styles.views}>{photo.acessos}</span>
 		</li>
 	);

@@ -88,21 +88,23 @@ const Post = () => {
 	};
 
 	return (
-		<div className={`${styles.post} anime-left`}>
-			<Head title="Postar foto" description="Poste a melhor foto" />
-			<form onSubmit={handleSubmit} className={styles.form}>
-				<Input label="Nome" name="name" {...name} />
-				<Input label="Peso" name="weight" {...weight} />
-				<Input label="Idade" name="age" {...age} />
-				<Input type="file" name="image" {...image} onChange={handleImage} accept="image/png, image/jpeg, image/jpg" error={img?.error && "Envie uma imagem do tipo PNG, JPEG ou JPG"} />
-				<Error error={error} />
-				{loading ? <Button disabled>Publicando...</Button> : <Button type="submit">Publicar</Button>}
-			</form>
+		<>
+			<Head title="Postar foto" description="Poste a melhor foto do seu cachorrinho!" />
+			<div className={`${styles.post} anime-left`}>
+				<form onSubmit={handleSubmit} className={styles.form}>
+					<Input label="Nome" name="name" {...name} />
+					<Input label="Peso" name="weight" {...weight} />
+					<Input label="Idade" name="age" {...age} />
+					<Input type="file" name="image" {...image} onChange={handleImage} accept="image/png, image/jpeg, image/jpg" error={img?.error && "Envie uma imagem do tipo PNG, JPEG ou JPG"} />
+					<Error error={error} />
+					{loading ? <Button disabled>Publicando...</Button> : <Button type="submit">Publicar</Button>}
+				</form>
 
-			<div className={styles.preview} {...(img?.preview && { style: { backgroundImage: `url(${img.preview})` } })}>
-				{!img?.preview && <p className={styles.preview__text}>Nenhuma imagem foi enviada</p>}
+				<div className={styles.preview} {...(img?.preview && { style: { backgroundImage: `url(${img.preview})` } })}>
+					{!img?.preview && <p className={styles.preview__text}>Nenhuma imagem foi enviada</p>}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

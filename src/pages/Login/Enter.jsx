@@ -37,26 +37,28 @@ const Enter = () => {
 	};
 
 	return (
-		<section className="anime-left">
+		<>
 			<Head title="Entrar" description="Entre na sua conta para acessar o site dogs" />
-			<h1 className="title">Entrar</h1>
-			<form onSubmit={handleSubmit} className={styles.form}>
-				<Input label="Usuário" name="username" {...username} />
-				<Input label="Senha" type="password" name="password" {...password} />
-				<Error error={error} />
-				<Button disabled={loading} type="submit">
-					{loading ? "Entrando..." : "Entrar"}
-				</Button>
-			</form>
-			<div className={styles.recover}>
-				<Link to="/login/recover" className={styles.recover__link}>
-					Esqueceu sua senha?
-				</Link>
-			</div>
-			<h2 className="subtitle">
-				Não tem uma conta? <Link to="/login/create">Cadastre-se</Link>
-			</h2>
-		</section>
+			<section className="anime-left">
+				<h1 className="title">Entrar</h1>
+				<form onSubmit={handleSubmit} className={styles.form}>
+					<Input label="Usuário" name="username" {...username} />
+					<Input label="Senha" type="password" name="password" {...password} />
+					<Error error={error} />
+					<Button disabled={loading} type="submit">
+						{loading ? "Entrando..." : "Entrar"}
+					</Button>
+				</form>
+				<div className={styles.recover}>
+					<Link to="/login/recover" className={styles.recover__link}>
+						Esqueceu sua senha?
+					</Link>
+				</div>
+				<h2 className="subtitle">
+					Não tem uma conta? <Link to="/login/create">Cadastre-se</Link>
+				</h2>
+			</section>
+		</>
 	);
 };
 

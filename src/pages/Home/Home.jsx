@@ -6,10 +6,12 @@ import Head from "../../helper/Head";
 
 const Home = () => {
 	return (
-		<section className="container container-main">
+		<>
 			<Head description="Página inicial do site Dogs." />
-			<Feed />
-		</section>
+			<section className="container container-main">
+				<Feed />
+			</section>
+		</>
 	);
 };
 

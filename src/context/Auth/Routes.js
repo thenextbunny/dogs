@@ -1,8 +1,8 @@
-// Componenet
-import Loading from "../../components/Loading/Loading";
-
 // Context
 import { UserContext } from "./Context";
+
+// Helper
+import Loading from "../../helper/Loading";
 
 // Hooks
 import { useContext } from "react";

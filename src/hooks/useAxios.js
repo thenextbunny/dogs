@@ -10,25 +10,24 @@ export const useAxios = () => {
 	const [loading, setLoading] = useState(false);
 
 	const request = useCallback(async (url, options) => {
-		let response;
-
 		try {
 			setError(null);
 			setLoading(true);
 
-			response = await axios({
+			const { status, data } = await axios({
 				url,
 				...options,
+				cache: "no-store",
 			});
 
-			setData(response.data);
+			setData(data);
+
+			return { status, data };
 		} catch (error) {
-			setError(error.response.data.message);
+			setError(error.data.message);
 		} finally {
 			setLoading(false);
 		}
-
-		return response;
 	}, []);
 
 	return {
