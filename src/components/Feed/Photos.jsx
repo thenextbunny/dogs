@@ -21,17 +21,15 @@ const Photos = ({ page, setInfinite, setModal, user }) => {
 		const fetchPhotos = async () => {
 			const { url, options } = getPhotos({ page, total: 6, user });
 
-			const { status, data } = await request(url, options);
+			const { data, status } = await request(url, options);
 
 			console.log(status, data);
 
 			if (status === 200 && data.length < 6) setInfinite(false);
-
-			//if (response && response.status === 200)
 		};
 
 		fetchPhotos();
-	}, [request, user, page]);
+	}, [request, user, page, setInfinite]);
 
 	if (error) return <Error error={error} />;
 	if (loading) return <Loading />;

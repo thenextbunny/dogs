@@ -15,7 +15,7 @@ const Account = ({ user }) => {
 
 	return (
 		<>
-			<Head title={`@${data.username}`} description="Página de Minha Conta do site dogs" />
+			<Head title={`@${data.username}`} description="Minha conta no site dogs" />
 			<Feed user={user} />
 		</>
 	);
