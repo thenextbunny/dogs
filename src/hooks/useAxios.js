@@ -14,17 +14,19 @@ export const useAxios = () => {
 			setError(null);
 			setLoading(true);
 
-			const { status, data } = await axios({
+			const { data, status } = await axios({
 				url,
 				...options,
-				cache: "no-store",
 			});
+
+			console.log(data, status);
 
 			setData(data);
 
-			return { status, data };
+			return { data, status };
 		} catch (error) {
-			setError(error.data.message);
+			console.log(error);
+			setError(error.response.data.message);
 		} finally {
 			setLoading(false);
 		}

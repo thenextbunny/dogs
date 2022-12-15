@@ -20,17 +20,17 @@ import { Link } from "react-router-dom";
 // Prop types
 import PropTypes from "prop-types";
 
-const Content = ({ data }) => {
+const Content = ({ data, single }) => {
 	const { username } = useContext(UserContext);
 
 	const { photo, comments } = data;
 
 	return (
-		<article className={styles.content}>
+		<article className={`${styles.content} ${single ? styles.single : ""}`}>
 			<div className={styles.photo}>
 				<Image src={photo.src} alt={photo.title} />
 			</div>
-			<div className={styles.container}>
+			<div className={styles.info}>
 				<div className={styles.details}>
 					<div className={styles.author}>
 						<p>
@@ -49,7 +49,7 @@ const Content = ({ data }) => {
 
 					<div className={styles.description}>
 						<h1 className="title">
-							<Link to={`/photo/${photo.id}`}>{photo.title}</Link>
+							<Link to={`/photo/${photo.author}/${photo.id}`}>{photo.title}</Link>
 						</h1>
 						<ul className={styles.attributes}>
 							<li>{photo.peso} kg</li>
@@ -77,6 +77,7 @@ Content.propTypes = {
 			author: PropTypes.string.isRequired,
 		}).isRequired,
 	}).isRequired,
+	single: PropTypes.bool,
 };
 
 export default Content;

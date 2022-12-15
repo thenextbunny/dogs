@@ -7,10 +7,6 @@
 	width: 100%;
 }
 
-.photo:not(:nth-child(2)) {
-	/*height: calc(100vw / 4);*/
-}
-
 .photo:nth-child(2) {
 	grid-column: 2 / 4;
 	grid-row: span 2;

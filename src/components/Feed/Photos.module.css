@@ -2,21 +2,16 @@
 	display: grid;
 	gap: 1rem;
 	grid-template-columns: repeat(3, 1fr);
-	/*grid-template-rows: repeat(auto-fill);*/
 	justify-items: center;
 	margin-bottom: 1rem;
-	border: 1px solid blue;
 }
 
-/*
 .photos {
 	display: grid;
 	gap: 1rem;
 	grid-template-columns: repeat(3, 1fr);
 	justify-items: center;
 	margin-bottom: 1rem;
-
-	border: 1px solid blue;
 }
 
 @media (max-width: 40rem) {
@@ -24,4 +19,3 @@
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
-*/

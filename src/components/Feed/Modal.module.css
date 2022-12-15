@@ -1,17 +1,22 @@
 .modal {
 	background: rgba(0, 0, 0, 0.4);
 	display: flex;
-	height: 100vh;
+	min-height: 100vh;
 	left: 0;
-	padding: 2rem calc(4rem + 2vw) 2rem 4rem;
+	min-width: 280px;
+	padding: 2rem calc(6rem + 2vw) 2rem 6rem;
 	position: fixed;
 	top: 0;
 	width: 100vw;
 	z-index: 1000;
 }
 
-@media (max-width: 40rem) {
+.modal :global(body) {
+	overflow: hidden;
+}
+
+@media (max-width: 36rem) {
 	.modal {
-		padding: 2rem calc(2rem + 2vw) 2rem 2rem;
+		padding: 1rem calc(1rem + 2vw) 1rem 1rem;
 	}
 }

@@ -2,7 +2,7 @@
 import "./App.css";
 
 // React router dom
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // Context
 import { UserStorage } from "./context/Auth/Context";
@@ -15,9 +15,10 @@ import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import User from "./pages/User/User";
-import { Initialization, RequireAuth, RequireNotAuth } from "./context/Auth/Routes";
+import Photo from "./pages/Photo/Photo";
 
-import Head from "./helper/Head";
+// Routes
+import { Initialization, RouteWrapper } from "./context/Auth/Routes";
 
 const App = () => {
 	return (
@@ -26,12 +27,13 @@ const App = () => {
 				<UserStorage>
 					<Initialization>
 						<main>
-							<Head />
 							<Header />
 							<Routes>
 								<Route path="/" element={<Home />} />
-								<Route path="login/*" element={<RequireNotAuth children={<Login />} />} />
-								<Route path="account/*" element={<RequireAuth children={<User />} />} />
+								<Route path="login/*" element={<RouteWrapper isPublic children={<Login />} />} />
+								<Route path="account/*" element={<RouteWrapper children={<User />} />} />
+								<Route path="photo" element={<Navigate to="/" />} />
+								<Route path="photo/:user/:id" element={<Photo />} />
 								<Route path="*" element={<h1>404</h1>} />
 							</Routes>
 							<Footer />

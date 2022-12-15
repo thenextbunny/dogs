@@ -8,7 +8,7 @@ const Footer = () => {
 	return (
 		<footer className={styles.footer}>
 			<Dogs />
-			<p>Todos os petiscos reservados.</p>
+			<p>Quase todos os petiscos reservados.</p>
 		</footer>
 	);
 };

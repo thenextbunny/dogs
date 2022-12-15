@@ -67,12 +67,12 @@
 	outline: none;
 }
 
-.button:is(:focus, :hover) svg path {
+.button:is(:focus, :hover):not([aria-disabled="true"]) svg path {
 	fill: var(--light-yellow);
 	stroke: var(--yellow);
 }
 
-.button:not([disabled]):is(:focus, :hover) svg g {
+.button:not([aria-disabled="true"]):is(:focus, :hover) svg g {
 	animation: baking 1s infinite;
 }
 

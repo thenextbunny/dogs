@@ -14,10 +14,14 @@ import { postComment } from "../../services/api/utils";
 
 // Prop Types
 import PropTypes from "prop-types";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 const Form = ({ authed, id, setComments }) => {
 	const { request, error, loading } = useAxios();
 	const [comment, setComment] = useState("");
+	const [valid, setValid] = useState(false);
+	const textareaRef = useRef(null);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -32,22 +36,24 @@ const Form = ({ authed, id, setComments }) => {
 		}
 	};
 
+	useEffect(() => {
+		if (comment.length > 0 && !loading) {
+			setValid(true);
+		} else setValid(false);
+	}, [comment, loading]);
+
 	console.log("Form", authed);
 
 	return (
 		<>
 			<Error error={error} />
 			<form onSubmit={handleSubmit} className={styles.form}>
-				<textarea className={styles.textarea} id="comment" name="comment" value={comment} onChange={({ target }) => setComment(target.value)} autoComplete="off" aria-label="Escreva um comentário" placeholder="Escreva um comentário" />
+				<textarea className={styles.textarea} id="comment" name="comment" value={comment} onChange={({ target }) => setComment(target.value)} autoComplete="off" aria-label="Escreva um comentário" placeholder="Escreva um comentário" ref={textareaRef} />
 				{authed ? (
-					<button type="submit" className={styles.button} aria-label="Comentar" disabled={loading || comment.length === 0}>
+					<button type={valid ? "submit" : "button"} className={styles.button} aria-label="Comentar" aria-disabled={loading || comment.length === 0} onClick={valid ? null : () => textareaRef.current.focus()}>
 						<Send />
 					</button>
-				) : (
-					<button type="button" className={styles.button} aria-label="Comentar" disabled={loading || comment.length === 0}>
-						<Send />
-					</button>
-				)}
+				) : null}
 			</form>
 		</>
 	);

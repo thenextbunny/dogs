@@ -48,10 +48,11 @@ export const postPhoto = (formData, token) => {
 
 export const getPhotos = ({ page, total, user }) => {
 	return {
-		url: api.defaults.baseURL + `/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
+		url: api.defaults.baseURL + `/api/photo/?_page=${page}&_total=${total}&_user=${user ? user : "0"}`,
 		options: {
 			method: "GET",
-			"Cache-Control": "no-store, no-cache, must-revalidate",
+			"Cache-Control": "no-cache",
+			Pragma: "no-cache",
 		},
 	};
 };
@@ -59,10 +60,6 @@ export const getPhotos = ({ page, total, user }) => {
 export const getPhoto = (id) => {
 	return {
 		url: api.defaults.baseURL + `/api/photo/${id}`,
-		options: {
-			method: "GET",
-			cache: "no-store",
-		},
 	};
 };
 

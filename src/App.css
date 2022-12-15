@@ -25,7 +25,6 @@ body {
 	--type-second: "Spectral", georgia, serif;
 	font-family: var(--type-first);
 	min-width: 280px;
-	padding-top: 4rem;
 }
 
 body::-webkit-scrollbar {
@@ -45,6 +44,10 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-thumb:hover {
 	background: var(--dark-charcoal);
+}
+
+main {
+	margin-top: 4rem;
 }
 
 section {
@@ -87,13 +90,13 @@ ul {
 }
 
 .container {
-	max-width: 1200px;
+	max-width: 60rem;
 	margin: 0 auto;
 	padding: 0 1.6rem;
 }
 
 .container-main {
-	padding-top: 1rem;
+	padding: 1.6rem;
 }
 
 .title {
@@ -146,7 +149,7 @@ ul {
 }
 
 .anime-left {
-	animation: anime-left 0.3s forwards;
+	animation: anime-left 0.5s forwards;
 	opacity: 0;
 	transform: translateX(-20px);
 }

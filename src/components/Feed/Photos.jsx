@@ -19,11 +19,10 @@ const Photos = ({ page, setInfinite, setModal, user }) => {
 
 	useEffect(() => {
 		const fetchPhotos = async () => {
+			console.log(user);
 			const { url, options } = getPhotos({ page, total: 6, user });
 
 			const { data, status } = await request(url, options);
-
-			console.log(status, data);
 
 			if (status === 200 && data.length < 6) setInfinite(false);
 		};
