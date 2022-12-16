@@ -4,7 +4,7 @@ import Input from "../../components/Form/Input";
 
 // Helper
 import Head from "../../helper/Head";
-import Error from "../../helper/Error";
+import Error from "../../helper/Error/Error";
 
 // Hooks
 import { useEffect, useState } from "react";

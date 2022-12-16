@@ -2,7 +2,7 @@
 import styles from "./Form.module.css";
 
 // Components
-import Error from "../../helper/Error";
+import Error from "../../helper/Error/Error";
 
 // Hooks
 import { useState } from "react";

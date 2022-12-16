@@ -19,3 +19,11 @@
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
+
+.end {
+	color: var(--dark-gray);
+	font-family: var(--type-first);
+	font-weight: 500;
+	padding: 2rem 0;
+	text-align: center;
+}

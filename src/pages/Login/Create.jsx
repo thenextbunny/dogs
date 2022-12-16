@@ -7,10 +7,10 @@ import { UserContext } from "../../context/Auth/Context";
 // Components
 import Button from "../../components/Form/Button";
 import Input from "../../components/Form/Input";
-import Error from "../../helper/Error";
 
 // Helper
 import Head from "../../helper/Head";
+import Error from "../../helper/Error/Error";
 
 // Hooks
 import { useForm } from "../../hooks/useForm";

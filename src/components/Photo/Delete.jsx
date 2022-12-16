@@ -1,12 +1,9 @@
 // Prop types
 import PropTypes from "prop-types";
 
-import { useState } from "react";
 import { deletePhoto } from "../../services/api/utils";
 
 import { useAxios } from "../../hooks/useAxios";
-
-import styles from "./Delete.module.css";
 
 const Delete = ({ id }) => {
 	const { request } = useAxios();
@@ -20,11 +17,9 @@ const Delete = ({ id }) => {
 	const handleDelete = async () => {
 		const { url, options } = deletePhoto(id);
 
-		const response = await request(url, options);
+		const { status } = await request(url, options);
 
-		console.log(response);
-
-		if (response.status === 200) window.location.reload();
+		if (status === 200) window.location.reload();
 	};
 
 	// TODO: Button delete and confirm delete with modal or not? And correct the styles

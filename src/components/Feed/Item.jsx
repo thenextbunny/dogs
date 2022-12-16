@@ -1,7 +1,7 @@
 import styles from "./Item.module.css";
 
 // Helper
-import Image from "../../helper/Image";
+import Image from "../../helper/Image/Image";
 
 // Prop types
 import PropTypes from "prop-types";

@@ -2,10 +2,10 @@
 	"files.exclude": {
 		"node_modules": true,
 		".gitignore": true,
-		"package.json": true,
-		"package-lock.json": true
+		//"package.json": true,
+		"package-lock.json": true,
 		//".vscode": true,
-		//"public": true,
-		//"*/assets": true
+		"public": true,
+		"*/assets": true
 	}
 }

@@ -2,8 +2,11 @@
 import styles from "./Photos.module.css";
 
 // Components
-import Error from "../../helper/Error";
 import Item from "./Item";
+
+// Helper
+import Error from "../../helper/Error/Error";
+import Loading from "../../helper/Loading/Loading";
 
 // Hooks
 import { useAxios } from "../../hooks/useAxios";
@@ -12,33 +15,39 @@ import { useEffect } from "react";
 
 // Prop types
 import PropTypes from "prop-types";
-import Loading from "../../helper/Loading";
 
-const Photos = ({ page, setInfinite, setModal, user }) => {
+const Photos = ({ page, setEnd, setInfinite, setModal, setNothing, user }) => {
 	const { loading, data, error, request } = useAxios();
 
 	useEffect(() => {
 		const fetchPhotos = async () => {
-			console.log(user);
 			const { url, options } = getPhotos({ page, total: 6, user });
 
 			const { data, status } = await request(url, options);
 
-			if (status === 200 && data.length < 6) setInfinite(false);
+			if (status === 200) {
+				setEnd(data.length > 0 && data.length < 6 ? true : false);
+				setInfinite(data.length < 6 ? false : true);
+				setNothing(data.length === 0 ? true : false);
+			}
 		};
 
 		fetchPhotos();
-	}, [request, user, page, setInfinite]);
+	}, [request, user, page, setEnd, setInfinite, setNothing]);
 
 	if (error) return <Error error={error} />;
 	if (loading) return <Loading />;
 	if (data)
 		return (
-			<ul className={`${styles.photos} anime-left`}>
-				{data.map((photo) => (
-					<Item key={photo.id} photo={photo} setModal={setModal} />
-				))}
-			</ul>
+			<>
+				{data.length !== 0 && (
+					<ul className={`${styles.photos} anime-left`}>
+						{data.map((photo) => (
+							<Item key={photo.id} photo={photo} setModal={setModal} />
+						))}
+					</ul>
+				)}
+			</>
 		);
 	else return null;
 };
@@ -47,7 +56,7 @@ Photos.propTypes = {
 	page: PropTypes.number,
 	setInfinite: PropTypes.func.isRequired,
 	setModal: PropTypes.func.isRequired,
-	user: PropTypes.number,
+	user: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default Photos;

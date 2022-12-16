@@ -19,6 +19,7 @@ import Photo from "./pages/Photo/Photo";
 
 // Routes
 import { Initialization, RouteWrapper } from "./context/Auth/Routes";
+import Profile from "./pages/User/Profile";
 
 const App = () => {
 	return (
@@ -34,6 +35,7 @@ const App = () => {
 								<Route path="account/*" element={<RouteWrapper children={<User />} />} />
 								<Route path="photo" element={<Navigate to="/" />} />
 								<Route path="photo/:user/:id" element={<Photo />} />
+								<Route path="profile/:user" element={<Profile />} />
 								<Route path="*" element={<h1>404</h1>} />
 							</Routes>
 							<Footer />

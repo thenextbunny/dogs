@@ -16,8 +16,6 @@ export const UserStorage = ({ children }) => {
 	const getUser = async (token) => {
 		const { data } = await getAuthUser(token);
 
-		console.log(data);
-
 		setData(data);
 	};
 

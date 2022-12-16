@@ -17,7 +17,7 @@ const Header = () => {
 	const { data, authed } = useContext(UserContext);
 
 	return (
-		<header className={styles.header}>
+		<header className={`${styles.header} anime-left`}>
 			<nav className={`${styles.nav} container`}>
 				<ul>
 					<li>

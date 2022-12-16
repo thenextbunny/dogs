@@ -19,7 +19,7 @@ const User = () => {
 	} = useContext(UserContext);
 
 	return (
-		<section className="container">
+		<section className="container container-main">
 			<Header />
 			<Routes>
 				<Route path="/" element={<Account user={id} />} />

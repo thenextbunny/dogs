@@ -7,7 +7,7 @@ import styles from "./Post.module.css";
 // Components
 import Button from "../../components/Form/Button";
 import Input from "../../components/Form/Input";
-import Error from "../../helper/Error";
+import Error from "../../helper/Error/Error";
 
 // Hooks
 import { useForm } from "../../hooks/useForm";

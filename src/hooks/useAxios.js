@@ -19,13 +19,10 @@ export const useAxios = () => {
 				...options,
 			});
 
-			console.log(data, status);
-
 			setData(data);
 
 			return { data, status };
 		} catch (error) {
-			console.log(error);
 			setError(error.response.data.message);
 		} finally {
 			setLoading(false);

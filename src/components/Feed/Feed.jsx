@@ -3,15 +3,22 @@ import Modal from "./Modal";
 import Photos from "./Photos";
 
 // Hooks
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 // Prop types
 import PropTypes from "prop-types";
 
+import { UserContext } from "../../context/Auth/Context";
+import { Link } from "react-router-dom";
+
 const Feed = ({ user }) => {
+	const { username } = useContext(UserContext);
+
 	const [modal, setModal] = useState(null);
 	const [pages, setPages] = useState([1]);
 	const [infinite, setInfinite] = useState(true);
+	const [end, setEnd] = useState(false);
+	const [nothing, setNothing] = useState(false);
 
 	useEffect(() => {
 		let wait = false;
@@ -27,7 +34,7 @@ const Feed = ({ user }) => {
 
 					setTimeout(() => {
 						wait = false;
-					}, 500);
+					}, 1000);
 				}
 			}
 		};
@@ -41,18 +48,36 @@ const Feed = ({ user }) => {
 		};
 	}, [infinite]);
 
+	useEffect(() => {
+		console.log(user, username);
+	}, [user, username]);
+
 	return (
 		<>
 			{modal && <Modal photo={modal} setModal={setModal} />}
 			{pages.map((page) => (
-				<Photos key={page} page={page} setInfinite={setInfinite} setModal={setModal} user={user} />
+				<Photos key={page} page={page} setInfinite={setInfinite} setModal={setModal} user={user} setEnd={setEnd} setNothing={setNothing} />
 			))}
+			{nothing && (
+				<p>
+					{user === username ? (
+						<span>
+							Você ainda não tem fotos. <Link to="/account/post">Publique uma foto</Link>!
+						</span>
+					) : (
+						<span>{user} ainda não tem fotos.</span>
+					)}
+				</p>
+			)}
+
+			{end && <p className="anime-left">Não há mais fotos para serem exibidas.</p>}
 		</>
 	);
 };
 
 Feed.propTypes = {
-	user: PropTypes.number,
+	// accept number and string
+	user: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default Feed;

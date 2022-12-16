@@ -5,7 +5,7 @@ import styles from "./Content.module.css";
 import { UserContext } from "../../context/Auth/Context";
 
 // Helper
-import Image from "../../helper/Image";
+import Image from "../../helper/Image/Image";
 
 // Hook
 import { useContext } from "react";
@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 // Prop types
 import PropTypes from "prop-types";
 
-const Content = ({ data, single }) => {
+const Content = ({ data, single, setModal }) => {
 	const { username } = useContext(UserContext);
 
 	const { photo, comments } = data;
@@ -37,7 +37,7 @@ const Content = ({ data, single }) => {
 							{username && username === photo.author ? (
 								<Delete id={photo.id} />
 							) : (
-								<Link to={`/profile/${photo.author}`} aria-label={`${photo.author === username ? "Minha conta" : `Ver perfil do usuário ${photo.author}`}`}>
+								<Link to={`/profile/${photo.author}`} onClick={() => setModal(null)} aria-label={`${photo.author === username ? "Minha conta" : `Ver perfil do usuário ${photo.author}`}`}>
 									@{photo.author}
 								</Link>
 							)}

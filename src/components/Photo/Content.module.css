@@ -1,12 +1,18 @@
 .content {
+	animation: scale-up 0.4s forwards;
 	background: var(--white);
-	border-radius: 0.3rem;
+	border-radius: 0.2rem;
 	display: grid;
 	grid-template-areas: "photo info";
 	grid-template: 1fr / 36rem 20rem;
 	height: 36rem;
 	margin: auto;
 	overflow: hidden;
+}
+
+.content:is(.single) {
+	animation: scale-down 0.4s forwards;
+	gap: 2rem;
 }
 
 .content::-webkit-scrollbar {
@@ -27,15 +33,45 @@
 	background: var(--dark-gray);
 }
 
+@keyframes scale-up {
+	0% {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes scale-down {
+	from {
+		transform: scale(1.1);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
 .photo {
 	grid-area: "photo";
 }
 
+.single .photo img {
+	border-radius: 0.2rem;
+}
+
 .info {
 	display: grid;
+	gap: 1.5rem;
 	grid-template-rows: auto 1fr;
 	grid-area: "info";
 	padding: 2rem;
+}
+
+.single .info {
+	padding: 0;
 }
 
 .author {
@@ -106,124 +142,6 @@
 
 	.content:is(.single) {
 		max-height: 100%;
+		max-width: 40rem;
 	}
 }
-
-/*
-@media (max-width: 40rem) {
-	.content {
-		grid-template: 1fr / 26rem 10rem;
-		height: 100%;
-		max-height: 100%;
-	}
-}*/
-
-/*
-
-	
-
-
-
-
-.photo {
-	grid: 1 / 4;
-	grid-area: photo;
-
-	height: 200px;
-}
-
-.photo img {
-	border-radius: 0.3rem 0 0 0.3rem;
-}
-
-.single .photo img {
-	border-radius: 0.3rem;
-}
-
-.container {
-	grid-area: info;
-}
-
-@media (max-width: 64rem) {
-	.content {
-		grid-template-areas:
-			"photo"
-			"info";
-		grid-template-columns: 1fr;
-		height: 100%;
-		grid-template-rows: 1fr;
-		max-height: calc(100vh - 4rem);
-		overflow-y: auto;
-	}
-
-	.photo {
-		grid-row: 1;
-	}
-}
-
-/*
-
-
-.content:is(.single) {
-	animation: scale-down 0.4s forwards;
-}
-
-
-
-@keyframes scale-up {
-	0% {
-		opacity: 0;
-		transform: scale(0.8);
-	}
-
-	100% {
-		opacity: 1;
-		transform: scale(1);
-	}
-}
-
-@keyframes scale-down {
-	from {
-		transform: scale(1.1);
-	}
-	to {
-		transform: scale(1);
-	}
-}
-
-
-.single .photo img {
-	border-radius: 0.3rem;
-}
-
-@media (max-width: 64rem) {
-	.content {
-		/*grid-template-columns: minmax(20rem, 40rem);
-		height: 100%;
-		max-height: calc(100vh - 4rem);
-		overflow-y: auto;
-		/*row-gap: 2rem;
-	}
-
-	.content:is(.single) {
-		overflow-y: hidden;
-		max-height: 100%;
-	}
-
-	.photo {
-		/*grid-row: 1;
-	}
-}
-
-.container {
-	display: grid;
-	grid-template-rows: auto 1fr;
-	gap: 1rem;
-	padding: 1rem;
-}
-
-.single .container {
-	padding: 0;
-	border: 1px solid red;
-}
-*/
