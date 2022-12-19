@@ -15,14 +15,14 @@ import { Routes, Route } from "react-router-dom";
 
 const User = () => {
 	const {
-		data: { id },
+		data: { username },
 	} = useContext(UserContext);
 
 	return (
 		<section className="container container-main">
 			<Header />
 			<Routes>
-				<Route path="/" element={<Account user={id} />} />
+				<Route path="/" element={<Account user={username} />} />
 				<Route path="post" element={<Post />} />
 				<Route path="stats" element={<Stats />} />
 			</Routes>

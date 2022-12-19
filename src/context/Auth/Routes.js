@@ -75,5 +75,5 @@ export const RouteWrapper = ({ children, isPublic }) => {
 export const Initialization = ({ children }) => {
 	const { initializing } = useContext(UserContext);
 
-	return initializing ? <Loading /> : children;
+	return initializing ? <Loading full /> : children;
 };

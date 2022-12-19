@@ -58,19 +58,21 @@ const Feed = ({ user }) => {
 			{pages.map((page) => (
 				<Photos key={page} page={page} setInfinite={setInfinite} setModal={setModal} user={user} setEnd={setEnd} setNothing={setNothing} />
 			))}
-			{nothing && (
+			{nothing && user && (
 				<p>
 					{user === username ? (
 						<span>
 							Você ainda não tem fotos. <Link to="/account/post">Publique uma foto</Link>!
 						</span>
 					) : (
-						<span>{user} ainda não tem fotos.</span>
+						<span>Ainda não tem fotos.</span>
 					)}
 				</p>
 			)}
+			{nothing && !user && <p>Não há nada para ser exibido</p>}
 
 			{end && <p className="anime-left">Não há mais fotos para serem exibidas.</p>}
+			{!end && !nothing && <p className="anime-left">Carregando...</p>}
 		</>
 	);
 };

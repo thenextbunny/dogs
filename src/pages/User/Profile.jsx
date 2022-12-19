@@ -1,15 +1,10 @@
 import React from "react";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Feed from "../../components/Feed/Feed";
 import Head from "../../helper/Head";
 
 const Profile = () => {
 	const { user } = useParams();
-
-	useEffect(() => {
-		console.log(user);
-	}, [user]);
 
 	return (
 		<>

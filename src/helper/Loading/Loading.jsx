@@ -4,7 +4,7 @@ import styles from "./Loading.module.css";
 // Hooks
 import { useEffect, useState } from "react";
 
-const Loading = ({ transparent }) => {
+const Loading = ({ transparent, full }) => {
 	const [step, setStep] = useState(0);
 
 	useEffect(() => {
@@ -24,7 +24,7 @@ const Loading = ({ transparent }) => {
 	};
 
 	return (
-		<div className={`${styles.wrapper} ${transparent ? styles.transparent : ""}`}>
+		<div className={`${styles.wrapper} ${transparent ? styles.transparent : ""} ${full ? styles.full : ""}`}>
 			<div className={styles.loading}>
 				<svg width="46" height="31" viewBox="0 0 46 31" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<g opacity={handleStep(0)}>
