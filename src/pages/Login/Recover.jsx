@@ -32,8 +32,6 @@ const Recover = () => {
 		});
 
 		await request(url, options);
-
-		//if (response.status === 200) setSuccess(true);
 	};
 
 	return (

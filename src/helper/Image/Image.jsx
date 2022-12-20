@@ -8,12 +8,9 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 const Image = ({ src, alt }) => {
-	const [initial, setInitial] = useState(true);
 	const [loaded, setLoaded] = useState(false);
 
 	const handleLoad = ({ target }) => {
-		setInitial(false);
-
 		setTimeout(() => {
 			setLoaded(true);
 		}, 500);

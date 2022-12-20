@@ -160,3 +160,17 @@ ul {
 		transform: translateX(0);
 	}
 }
+
+.error {
+	color: var(--dark-charcoal);
+	font-weight: 500;
+	padding: 2rem;
+	text-align: center;
+}
+
+:global(.VictoryContainer) {
+	height: initial !important;
+	border: 1px solid red !important;
+	padding: 50px !important;
+	width: 50% !important;
+}

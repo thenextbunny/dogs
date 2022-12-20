@@ -6,7 +6,6 @@ import Item from "./Item";
 
 // Helper
 import Error from "../../helper/Error/Error";
-import Loading from "../../helper/Loading/Loading";
 
 // Hooks
 import { useAxios } from "../../hooks/useAxios";
@@ -36,7 +35,7 @@ const Photos = ({ page, setEnd, setInfinite, setModal, setNothing, user }) => {
 	}, [request, user, page, setEnd, setInfinite, setNothing]);
 
 	if (error) return <Error error={error} />;
-	if (loading) return <Loading />;
+	if (loading) return;
 	if (data)
 		return (
 			<>

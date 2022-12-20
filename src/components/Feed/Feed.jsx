@@ -48,10 +48,6 @@ const Feed = ({ user }) => {
 		};
 	}, [infinite]);
 
-	useEffect(() => {
-		console.log(user, username);
-	}, [user, username]);
-
 	return (
 		<>
 			{modal && <Modal photo={modal} setModal={setModal} />}
@@ -59,20 +55,29 @@ const Feed = ({ user }) => {
 				<Photos key={page} page={page} setInfinite={setInfinite} setModal={setModal} user={user} setEnd={setEnd} setNothing={setNothing} />
 			))}
 			{nothing && user && (
-				<p>
+				<p className="error">
 					{user === username ? (
 						<span>
-							Você ainda não tem fotos. <Link to="/account/post">Publique uma foto</Link>!
+							Você ainda não tem fotos.{" "}
+							<Link
+								to="/account/post"
+								style={{
+									color: "#fb1",
+									fontWeight: "bold",
+								}}
+							>
+								Publique uma foto!
+							</Link>
 						</span>
 					) : (
 						<span>Ainda não tem fotos.</span>
 					)}
 				</p>
 			)}
-			{nothing && !user && <p>Não há nada para ser exibido</p>}
+			{nothing && !user && <p className="error">Não há nada para ser exibido.</p>}
 
-			{end && <p className="anime-left">Não há mais fotos para serem exibidas.</p>}
-			{!end && !nothing && <p className="anime-left">Carregando...</p>}
+			{end && <p className="anime-left error">Não há mais fotos para serem exibidas.</p>}
+			{!end && !nothing && <p className="anime-left error">Carregando...</p>}
 		</>
 	);
 };

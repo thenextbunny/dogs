@@ -114,3 +114,16 @@ export const deletePhoto = (id) => {
 		},
 	};
 };
+
+export const getStats = () => {
+	return {
+		url: api.defaults.baseURL + "/api/stats",
+		options: {
+			method: "GET",
+			headers: {
+				Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+			},
+			data: null,
+		},
+	};
+};

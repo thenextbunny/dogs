@@ -101,7 +101,7 @@ const Post = () => {
 				</form>
 
 				<div className={styles.preview} {...(img?.preview && { style: { backgroundImage: `url(${img.preview})` } })}>
-					{!img?.preview && <p className={styles.preview__text}>Nenhuma imagem foi enviada</p>}
+					{!img?.preview && <p className={styles.preview__text}>Nenhuma imagem foi enviada.</p>}
 				</div>
 			</div>
 		</>
